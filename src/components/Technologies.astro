@@ -102,15 +102,15 @@ const technologies = [
 ---
 
 <section class="section" id="skill">
-    <h2 class="tech-title"><Tech class="w-10 h-10" /> Tecnologías</h2>
-    <div class="tech-grid">
+    <h2 class="tech-title animate-on-scroll"><Tech class="w-10 h-10" /> Tecnologías</h2>
+    <div class="tech-grid animate-on-scroll">
         {
             technologies.map((tech) => (
-                <article class="tech-card">
-                    <h3 class="tech-card-title">{tech.category}</h3>
-                    <div class="icons">
+                <article class="tech-card animate-on-scroll">
+                    <h3 class="tech-card-title animate-on-scroll">{tech.category}</h3>
+                    <div class="icons animate-on-scroll">
                         {tech.icons.map((icon) => (
-                            <div class="icon-item">
+                            <div class="icon-item animate-on-scroll">
                                 <img src={icon.src} alt={icon.name} />
                                 <p>{icon.name}</p>
                             </div>

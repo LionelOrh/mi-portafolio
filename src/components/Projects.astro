@@ -14,7 +14,7 @@ const projects = [
             "Sistema de autenticación y autorización con Spring Security y Angular. Implementa autenticación basada en JWT para sesiones seguras y gestión de roles. Las contraseñas se almacenan de forma cifrada para mayor seguridad. El backend está desarrollado con Spring Boot y MySQL como base de datos, y el frontend con Angular.",
         image: ProyectoIniciarSesion,
         link: "",
-        youtube:"",
+        youtube: "",
         GitHub: [
             {
                 name: "Backend",
@@ -46,7 +46,7 @@ const projects = [
             "Sistema de gestión de accesos y roles con autenticación de usuarios y control de permisos. Incorpora la lectura de códigos de barras mediante escáner para agilizar el registro de accesos. Desarrollado con Spring Boot en el backend, Angular en el frontend y MySQL como base de datos.",
         image: SstemaAccesos,
         link: "",
-        youtube:"",
+        youtube: "",
         GitHub: [
             {
                 name: "Backend",
@@ -78,7 +78,7 @@ const projects = [
             "Sistema para el envío masivo de mensajes a WhatsApp, desarrollado con Spring Boot. Permite la automatización del envío de mensajes a múltiples destinatarios a través de una API. Las pruebas y consultas a la API se realizan con Insomnia.",
         image: SistemaMMW,
         link: "",
-        youtube:"https://youtu.be/iIf70ux5yyM",
+        youtube: "https://youtu.be/iIf70ux5yyM",
         GitHub: [
             {
                 name: "Code",
@@ -102,7 +102,7 @@ const projects = [
             "Desarrollo de un CRUD que permite crear, leer, actualizar y eliminar registros. El backend está construido con Spring Boot, proporcionando una API REST segura y eficiente. El frontend está desarrollado con React y estilizado con Tailwind CSS, ofreciendo una interfaz moderna y responsiva.",
         image: ProyectoCRUD,
         link: "https://prueba-tecnica-mcc-front-end.vercel.app/",
-        youtube:"https://youtu.be/ZTEP-COi5qI",
+        youtube: "https://youtu.be/ZTEP-COi5qI",
         GitHub: [
             {
                 name: "Backend",
@@ -136,47 +136,53 @@ const projects = [
 ---
 
 <section class="projects" id="proyectos">
-    <h2 class="p-title"><Code class="w-10 h-10" /> Proyectos</h2>
+    <h2 class="p-title animate-on-scroll">
+        <Code class="w-10 h-10" /> Proyectos
+    </h2>
     <div class="projects-grid">
         {
             projects.map((project) => (
-                <article class="project-card">
-                    <div class="project-image-container">
+                <article class="project-card animate-on-scroll">
+                    <div class="project-image-container animate-on-scroll">
                         <img
                             src={project.image.src}
                             alt={project.title}
                             class="project-image"
                         />
                     </div>
-                    <h3 class="project-title">{project.title}</h3>
-                    <div class="tech-stack">
+                    <h3 class="project-title animate-on-scroll">{project.title}</h3>
+                    <div class="tech-stack animate-on-scroll">
                         {project.technologies.map((tech) => (
-                            <div class="tech-item">
+                            <div class="tech-item animate-on-scroll">
                                 <img
                                     src={tech.icon}
                                     alt={tech.name}
-                                    class="tech-icon"
+                                    class="tech-icon animate-on-scroll"
                                 />
                                 <span>{tech.name}</span>
                             </div>
                         ))}
                     </div>
-                    <p class="project-description">{project.description}</p>
-                    <div class="project-links">
+                    <p class="project-description animate-on-scroll">{project.description}</p>
+                    <div class="project-links animate-on-scroll">
                         {project.link && (
-                            <a href={project.link} class="btn" target="_blank">
+                            <a href={project.link} class="btn animate-on-scroll" target="_blank">
                                 <Link class="w-5 h-5" />
                                 Ver proyecto
                             </a>
                         )}
-                        
+
                         {project.youtube && (
-                            <a href={project.youtube} class="btn" target="_blank">
+                            <a
+                                href={project.youtube}
+                                class="btn animate-on-scroll"
+                                target="_blank"
+                            >
                                 <Youtube class="w-5 h-5" />
                                 Youtube
                             </a>
                         )}
-                        <div class="project-github">
+                        <div class="project-github animate-on-scroll">
                             {project.GitHub.map((repo) => (
                                 <a href={repo.url} target="_blank" class="btn">
                                     <GitHub class="w-5 h-5" />
@@ -197,7 +203,6 @@ const projects = [
         color: white;
         width: 100%;
         max-width: 880px;
-        margin-top: 4rem;
         margin-bottom: 4rem;
         padding: 0 20px;
     }
@@ -220,7 +225,6 @@ const projects = [
         display: flex;
         flex-direction: column;
         gap: 10px;
-
     }
     .project-image-container {
         width: 100%;
@@ -270,7 +274,6 @@ const projects = [
     }
     .project-description {
         font-size: 14px;
-        opacity: 0.6;
     }
     .project-links {
         display: flex;
@@ -300,18 +303,16 @@ const projects = [
         .projects-grid {
             grid-template-columns: 1fr; /* Solo 1 columna */
         }
-        .projects{
-                padding: 0px 30px;
-            }
-        .project-card{
+        .projects {
+            padding: 0px 30px;
+        }
+        .project-card {
             max-width: 100%;
         }
     }
     @media (min-width: 430px) {
-        .projects{
-                padding: 0px 30px;
-            }
+        .projects {
+            padding: 0px 30px;
+        }
     }
-
-    
 </style>
