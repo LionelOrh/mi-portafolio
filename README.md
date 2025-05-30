@@ -2,7 +2,7 @@
 
 ¡Bienvenido/a a mi portafolio web! 🚀 Aquí muestro mis proyectos, habilidades y experiencia en desarrollo web.  
 
-🔗 **[Ver Portafolio]([https://tu-dominio.com](https://lionel-orihuela.vercel.app/))**  
+🔗  **[Ver Portafolio](https://lionel-orihuela.vercel.app/)**  
 
 ![image](https://github.com/user-attachments/assets/c2f70daf-f278-4891-9d6e-4c1f48b0f0d4)
 
