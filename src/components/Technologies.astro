@@ -53,7 +53,7 @@ const technologies = [
             {
                 name: "MongoBD",
                 src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg",
-            }
+            },
         ],
     },
     {
@@ -76,9 +76,9 @@ const technologies = [
                 src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
             },
             {
-                name:"Flutter",
-                src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg"
-            }
+                name: "Flutter",
+                src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg",
+            },
         ],
     },
     {
@@ -112,10 +112,13 @@ const technologies = [
 <section class="section-tech" id="skill">
     <div class="section-tech_container">
         <span class="tech-title"> <Tech />Tecnologías</span>
-        <div class="tech-grid">
+        <div class="tech-grid" >
             {
                 technologies.map((tech) => (
-                    <article class="tech-card">
+                    <article
+                        class="tech-card"
+                        data-aos="zoom-in-down"
+                    >
                         <h3 class="tech-card-title">{tech.category}</h3>
                         <div class="icons">
                             {tech.icons.map((icon) => (
@@ -211,7 +214,6 @@ const technologies = [
         }
     }
     @media (min-width: 564px) and (max-width: 767px) {
-
         .icon-item img {
             width: 50px;
             height: auto;

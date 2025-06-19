@@ -27,10 +27,11 @@ import Trayecto from "../assets/Icon/Trayecto.astro";
         <Trayecto />
         Trayectoria
     </p>
-    <div class="section_trayectoria__container">
+    <div class="section_trayectoria__container" data-aos="zoom-in-down"> 
         {
             trayectoria.map((trayectoria) => (
-                <article class="container">
+                <article class="container"
+                >
                     <div class="left">
                         <span class="left_title">{trayectoria.carrera}</span>
                         <span class="left_año">{trayectoria.año}</span>

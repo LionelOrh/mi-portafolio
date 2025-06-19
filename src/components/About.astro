@@ -9,17 +9,32 @@ import Me from "../assets/me.webp";
         <h1 class="about-title">
             <User class="w-10 h-10" />Sobre mí
         </h1>
-        <article class="section_about_info_details">
+        <article class="section_about_info_details" data-aos="zoom-in">
             <div class="about_image">
-                <Image src={Me} alt="Lionel Erix" class="about_img"/>
+                <Image src={Me} alt="Lionel Erix" class="about_img" />
             </div>
             <div class="info_user">
                 <p class="info_name">Lionel Erix</p>
                 <p class="info_text">
-                    💻 Hola, soy Lionel Erix, un apasionado del desarrollo web con formación en Computación e Información gracias a PRONABEC. Mi interés por la tecnología comenzó de manera autodidacta, explorando diversas herramientas y metodologías. A lo largo de mi formación, he trabajado en proyectos personales y académicos, aplicando buenas prácticas de desarrollo y utilizando metodologías ágiles como Scrum para optimizar la gestión del trabajo.
+                    💻 Hola, soy Lionel Erix, un apasionado del desarrollo web
+                    con formación en Computación e Información gracias a
+                    PRONABEC. Mi interés por la tecnología comenzó de manera
+                    autodidacta, explorando diversas herramientas y
+                    metodologías. A lo largo de mi formación, he trabajado en
+                    proyectos personales y académicos, aplicando buenas
+                    prácticas de desarrollo y utilizando metodologías ágiles
+                    como Scrum para optimizar la gestión del trabajo.
                 </p>
                 <p class="info_text">
-                    🚀 Tengo experiencia en el desarrollo de aplicaciones web utilizando tecnologías como Java, Spring Boot y frameworks modernos de frontend, priorizando la escalabilidad, el rendimiento y la seguridad. Me motiva analizar problemas complejos y diseñar soluciones eficientes, combinando tecnología con estrategias óptimas de desarrollo. Siempre estoy en búsqueda de nuevos desafíos y oportunidades para seguir aprendiendo, mejorando mis habilidades y aplicando mis conocimientos en proyectos innovadores.
+                    🚀 Tengo experiencia en el desarrollo de aplicaciones web
+                    utilizando tecnologías como Java, Spring Boot y frameworks
+                    modernos de frontend, priorizando la escalabilidad, el
+                    rendimiento y la seguridad. Me motiva analizar problemas
+                    complejos y diseñar soluciones eficientes, combinando
+                    tecnología con estrategias óptimas de desarrollo. Siempre
+                    estoy en búsqueda de nuevos desafíos y oportunidades para
+                    seguir aprendiendo, mejorando mis habilidades y aplicando
+                    mis conocimientos en proyectos innovadores.
                 </p>
             </div>
         </article>
@@ -32,7 +47,7 @@ import Me from "../assets/me.webp";
         max-width: 100%;
         margin-top: 4rem;
         margin-bottom: 5rem;
-        font-family: "Poppins",sans-serif;
+        font-family: "Poppins", sans-serif;
     }
     .about-title {
         font-size: 2rem;
@@ -77,19 +92,19 @@ import Me from "../assets/me.webp";
         max-width: 100%; /* Evita desbordamiento */
     }
     @media (max-width: 830px) {
-        .section_about{
+        .section_about {
             margin-top: 4rem;
             margin-bottom: 5rem;
         }
         .section_about_info_details {
-            grid-template-columns: 1fr; 
+            grid-template-columns: 1fr;
         }
         .about_img {
             width: 100%;
             height: auto;
         }
-        .info_text{
-            font-size: 0.90rem;
+        .info_text {
+            font-size: 0.9rem;
         }
     }
 </style>
