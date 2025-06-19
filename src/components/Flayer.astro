@@ -1,6 +1,7 @@
 ---
-import Tecnologias from "./Tecnologias.astro"
+import Tecnologias from "./Tecnologias.astro";
 ---
+
 <section class="section-flayer">
     <article class="section-flayer__container">
         <div class="sectio-flayer__descripcion">
@@ -26,12 +27,16 @@ import Tecnologias from "./Tecnologias.astro"
         max-width: 100%;
         height: 100%;
         padding: 20px;
-        
     }
     .descripcion {
         color: white;
         font-family: "Poppins", sans-serif;
         font-size: 2rem;
         width: fit-content;
+    }
+    @media (max-width: 564px) {
+        .descripcion {
+            font-size: 1.2rem;
+        }
     }
 </style>
