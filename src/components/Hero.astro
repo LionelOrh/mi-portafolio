@@ -102,21 +102,25 @@ import Valores from "../components/Valores.astro";
     </div>
 </section>
 <style>
+    /* Estilos ordenados según la estructura de etiquetas HTML */
     .section-hero {
         display: flex;
         width: 100%;
         height: 100dvh;
         align-items: center;
     }
+
     .section-hero__container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         padding-inline: clamp(1rem, 5vw, 80px);
         gap: 20px;
     }
+
     .section-hero__info-user {
         max-width: 80%;
     }
+
     .estado {
         display: inline-flex;
         align-items: center;
@@ -124,9 +128,11 @@ import Valores from "../components/Valores.astro";
         font-weight: 600;
         color: #2ecc71;
         padding: 10px;
-        background: #deebe9;
+        background: #b2e4dc;
         border-radius: 20px;
+        margin: 0;
     }
+
     .estado::before {
         content: "";
         display: inline-block;
@@ -147,6 +153,7 @@ import Valores from "../components/Valores.astro";
             transform: scale(0.9);
         }
     }
+
     .title__especialidad {
         font-size: 75px;
         font-family: "Poppins", sans-serif;
@@ -154,11 +161,13 @@ import Valores from "../components/Valores.astro";
         line-height: 1;
         margin-top: 2rem;
     }
+
     .info__descripcion {
         color: #4d4d4d;
         font-family: "Poppins", sans-serif;
         margin-top: 1rem;
     }
+
     .info__descarga {
         background: #9ab099;
         padding: 10px;
@@ -168,19 +177,62 @@ import Valores from "../components/Valores.astro";
         font-weight: 500;
         margin-top: 1rem;
         display: inline-block;
+        text-decoration: none;
     }
+
     .section-hero__info-image {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         grid-template-rows: 300px 150px;
         gap: 10px;
     }
+
     .mini__project {
         grid-column: span 2 / span 2;
         border-radius: 20px;
         overflow: hidden;
         position: relative;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
     }
+
+    .imagen-miniprojects {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 0;
+        object-fit: cover;
+    }
+
+    .info_user_project {
+        position: absolute;
+        z-index: 1;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .info_user_project__details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .info_user_project__direct-projects {
+        background: #c4e7fd;
+        border-radius: 20px;
+        display: flex;
+        width: fit-content;
+        padding: 5px 10px;
+        text-decoration: none; /* Quita el subrayado del enlace */
+        color: #000; /* Color de texto legible */
+        cursor: pointer; /* Indica que es clicable */
+    }
+
     .photo__profile {
         grid-column: span 3 / span 3;
         grid-column-start: 3;
@@ -188,6 +240,13 @@ import Valores from "../components/Valores.astro";
         border-radius: 20px;
         overflow: hidden;
     }
+
+    .image-profile {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
     .desc {
         grid-column: span 3 / span 3;
         grid-row-start: 2;
@@ -199,32 +258,40 @@ import Valores from "../components/Valores.astro";
         );
         display: flex;
         flex-direction: column;
-        justify-content: end;
+        justify-content: center;
         border-radius: 20px;
         overflow: hidden;
     }
+
+    .desc_container {
+       display: flex;
+       flex-direction: column;
+    }
+
     .desc_text {
         width: 100%;
         display: flex;
-        padding: 0px 10px;
         font-family: "Poppins", sans-serif;
         font-weight: 300;
+        padding: 0px 10px;
+        box-sizing: border-box;
     }
+
     .social__media {
         grid-column: span 2 / span 2;
         grid-column-start: 4;
         grid-row-start: 2;
-
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(2, auto);
         gap: 5px;
         justify-items: center;
     }
+
     .social__media .item {
         background-color: rgb(255, 255, 255);
-        width: 60px; /* o el tamaño que desees */
-        height: 60px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         padding: 10px;
         display: flex;
@@ -232,38 +299,7 @@ import Valores from "../components/Valores.astro";
         align-items: center;
     }
 
-    .image-profile {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    .imagen-miniprojects {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        z-index: 0;
-    }
-    .info_user_project {
-        position: absolute;
-        z-index: 1;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 15px;
-    }
-    .info_user_project__details {
-        display: flex;
-        flex-direction: column;
-    }
-    .info_user_project__direct-projects {
-        background: #c4e7fd;
-        border-radius: 20px;
-        display: flex;
-        width: fit-content;
-        padding: 5px 10px;
-    }
-
+    /* Media Queries */
     @media (max-width: 564px) {
         .section-hero {
             height: 100dvh;
@@ -300,79 +336,69 @@ import Valores from "../components/Valores.astro";
             display: none;
         }
     }
+
     @media (min-width: 564px) and (max-width: 767px) {
         .section-hero {
             height: 100dvh;
         }
-
         .section-hero__container {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-
         .section-hero__info-user {
             max-width: 100%;
             text-align: center;
         }
-
         .title__especialidad {
             font-size: 3.5rem;
             margin-top: 1rem;
         }
-
         .info__descripcion {
             font-size: 1rem;
         }
-
         .info__descarga {
             margin-top: 1.5rem;
             padding: 10px 20px;
         }
-
         .section-hero__info-image {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
         }
-
         .photo__profile {
             width: 200px;
             height: 200px;
             border-radius: 50%;
             overflow: hidden;
         }
-
         .image-profile {
             object-fit: cover;
             width: 100%;
             height: 100%;
         }
-
         .estado {
             margin-top: 1rem;
             justify-content: center;
             font-size: 0.85rem;
         }
-
         .social__media {
             grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(2, auto);  
+            grid-template-rows: repeat(2, auto);
         }
-
         .social__media .item {
             width: 50px;
             height: 50px;
             padding: 8px;
         }
-
         .mini__project,
         .desc {
             display: none;
         }
     }
-    @media(min-width: 768px) and (max-width: 1200px) {
+
+    @media (min-width: 768px) and (max-width: 1200px) {
         .section-hero {
             height: 100dvh;
             width: 100%;
@@ -380,41 +406,34 @@ import Valores from "../components/Valores.astro";
         .section-hero__info-user {
             max-width: 100%;
         }
-
         .mini__project,
         .desc {
             display: none;
         }
         .section-hero__container {
             display: flex;
-            
         }
         .section-hero__info-image {
             display: flex;
             flex-direction: column;
         }
-
         .photo__profile {
             width: 250px;
             height: 250px;
             border-radius: 50%;
             overflow: hidden;
         }
-
         .title__especialidad {
             font-size: 4rem;
             margin-top: 1rem;
         }
-
         .info__descripcion {
             font-size: 1rem;
         }
-
         .info__descarga {
             margin-top: 1.5rem;
             padding: 10px 20px;
         }
-
         .image-profile {
             object-fit: cover;
             width: 100%;
