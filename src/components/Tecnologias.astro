@@ -1,0 +1,63 @@
+---
+import Angular from "../assets/Icon/Angular.astro";
+import React from "../assets/Icon/React.astro";
+import SpringBoot from "../assets/Icon/SpringBoot.astro";
+import GitHub from "../assets/Icon/GitHubPro.astro";
+import Java from "../assets/Icon/Java.astro";
+import MySql from "../assets/Icon/MySql.astro";
+import SqlServer from "../assets/Icon/SqlServer.astro";
+---
+
+<section class="tag-list___valores">
+    <ul class="inner">
+        <li class="tag angular">
+            <Angular />
+            Angular
+        </li> 
+        <li class="tag"><React /></li>
+        <li class="tag"><SpringBoot /></li>
+        <li class="tag"><GitHub /></li>
+        <li class="tag"><Java /></li>
+        <li class="tag"><MySql /></li>
+        <li class="tag"><SqlServer /></li>
+    </ul>
+    <div class="fade"></div>
+</section>
+<style>
+    .tag-list___valores{
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+    }
+    .inner {
+        display: flex;
+        width: fit-content;
+        align-items: center;
+        gap: 2rem;
+        position: relative;
+        animation: tech 15s linear infinite;
+    
+    }
+    .tag {
+        width: 100px;
+        max-height: 100%;
+    }
+    .angular{
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    @keyframes tech {
+        0% {
+            transform: translateX(5%);
+        }
+        100% {
+            transform: translateX(-10%);
+        }
+    }
+</style>

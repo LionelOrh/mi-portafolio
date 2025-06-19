@@ -1,0 +1,381 @@
+---
+import Code from "../assets/Icon/Code.astro";
+import GitHub from "../assets/Icon/GitHubMin.astro";
+import ProyectoIniciarSesion from "../assets/ProyectoIniciarSesion.webp";
+import ProyectoCRUD from "../assets/ProyectoCrud.webp";
+import SstemaAccesos from "../assets/Sistema-Accesos.webp";
+import SistemaMMW from "../assets/MensajeMasivoWhastApp.webp";
+import Link from "../assets/Icon/Link.astro";
+import Constructora from "../assets/constructora.webp";
+import Youtube from "../assets/Icon/YoutubeMini.astro";
+import Image from "astro/components/Image.astro";
+const projects = [
+    {
+        title: "Sistema de Autenticación y Autorización",
+        description:
+            "Sistema de autenticación y autorización con Spring Security y Angular. Implementa autenticación basada en JWT para sesiones seguras y gestión de roles. Las contraseñas se almacenan de forma cifrada para mayor seguridad. El backend está desarrollado con Spring Boot y MySQL como base de datos, y el frontend con Angular.",
+        image: ProyectoIniciarSesion,
+        link: "",
+        youtube: "https://youtu.be/7nzJP-i-2mc",
+        GitHub: [
+            {
+                name: "Backend",
+                url: "https://github.com/LionelOrh/Sistema-Autenticacion-Autorizacion-Backend.git",
+            },
+            {
+                name: "Frontend",
+                url: "https://github.com/LionelOrh/Sistema-Autenticacion-Autorizacion-FrontEnd.git",
+            },
+        ],
+        technologies: [
+            {
+                name: "Spring Boot",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg",
+            },
+            {
+                name: "Angular",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg",
+            },
+            {
+                name: "MySQL",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
+            },
+        ],
+    },
+    {
+        title: "Sistema de Accesos y gestión de Roles",
+        description:
+            "Sistema de gestión de accesos y roles con autenticación de usuarios y control de permisos. Incorpora la lectura de códigos de barras mediante escáner para agilizar el registro de accesos. Desarrollado con Spring Boot en el backend, Angular en el frontend y MySQL como base de datos.",
+        image: SstemaAccesos,
+        link: "",
+        youtube: "",
+        GitHub: [
+            {
+                name: "Backend",
+                url: "https://github.com/LionelOrh/Prueba-Tecnica-MCC-Backend.git",
+            },
+            {
+                name: "Frontend",
+                url: "https://github.com/LionelOrh/Prueba-Tecnica-MCC-FrontEnd.git",
+            },
+        ],
+        technologies: [
+            {
+                name: "Spring Boot",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg",
+            },
+            {
+                name: "Angular",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg",
+            },
+            {
+                name: "MySQL",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
+            },
+        ],
+    },
+    {
+        title: "Sistema de Envío Masivo de Mensajes a WhatsApp",
+        description:
+            "Sistema para el envío masivo de mensajes a WhatsApp, desarrollado con Spring Boot. Permite la automatización del envío de mensajes a múltiples destinatarios a través de una API. Las pruebas y consultas a la API se realizan con Insomnia.",
+        image: SistemaMMW,
+        link: "",
+        youtube: "https://youtu.be/iIf70ux5yyM",
+        GitHub: [
+            {
+                name: "Code",
+                url: "https://github.com/LionelOrh/Mensajes-Masivos-WhatsApp.git",
+            },
+        ],
+        technologies: [
+            {
+                name: "Spring Boot",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg",
+            },
+            {
+                name: "Insomnia",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/insomnia/insomnia-original.svg",
+            },
+        ],
+    },
+    {
+        title: "Gestión de Registros (CRUD)",
+        description:
+            "Desarrollo de un CRUD que permite crear, leer, actualizar y eliminar registros. El backend está construido con Spring Boot, proporcionando una API REST segura y eficiente. El frontend está desarrollado con React y estilizado con Tailwind CSS, ofreciendo una interfaz moderna y responsiva.",
+        image: ProyectoCRUD,
+        link: "https://prueba-tecnica-mcc-front-end.vercel.app/",
+        youtube: "https://youtu.be/ZTEP-COi5qI",
+        GitHub: [
+            {
+                name: "Backend",
+                url: "https://github.com/LionelOrh/Prueba-Tecnica-MCC-Backend.git",
+            },
+            {
+                name: "Frontend",
+                url: "https://github.com/LionelOrh/Prueba-Tecnica-MCC-FrontEnd.git",
+            },
+        ],
+        technologies: [
+            {
+                name: "Spring Boot",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg",
+            },
+            {
+                name: "React",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+            },
+            {
+                name: "Tailwind CSS",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+            },
+            {
+                name: "MySQL",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
+            },
+        ],
+    },
+    {
+        title: "Constructora JAIL.SAC",
+        description:
+            "Desarrollo de un sitio web, innovadora para la industria de construcción que integra tecnologías modernas para optimizar procesos y mejorar eficiencia.",
+        image: Constructora,
+        link: "https://proyecto-jail-constructora-sac.vercel.app/",
+        youtube: "",
+        GitHub: [
+            {
+                name: "Code",
+                url: "https://github.com/LionelOrh/proyecto-jail-constructora-sac.git",
+            },
+        ],
+        technologies: [
+            {
+                name: "Astro",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/astro/astro-original.svg",
+            },
+            {
+                name: "Html",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
+            },
+            {
+                name: "CSS",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
+            },
+        ],
+    },
+];
+---
+
+<section class="section-projects" id="proyectos">
+    <div class="section-projects__container">
+        <span class="section-projects__title">
+            <Code />
+            <span>Mis Proyectos</span>
+        </span>
+
+        <div class="projects_container">
+            {
+                projects.map((project) => (
+                    <article class="project_container__item">
+                        <div class="project-image-container">
+                            <Image
+                                src={project.image}
+                                alt={project.title}
+                                class="project_img"
+                            />
+                        </div>
+
+                        <div class="tech-stack">
+                            {project.technologies.map((tech) => (
+                                <div class="tech-item">
+                                    <img
+                                        src={tech.icon}
+                                        alt={tech.name}
+                                        class="tech-icon"
+                                        loading="lazy"
+                                    />
+                                    <span class="tech-item__name">
+                                        {tech.name}
+                                    </span>
+                                </div>
+                            ))}
+                        </div>
+                        <div class="project__details">
+                            <span class="project_title"> {project.title}</span>
+                            <p class="project_descripcion">
+                                {project.description}
+                            </p>
+                        </div>
+                        <div class="project-links">
+                            {project.link && (
+                                <a
+                                    href={project.link}
+                                    class="btn"
+                                    target="_blank"
+                                >
+                                    <Link />
+                                    Ver proyecto
+                                </a>
+                            )}
+
+                            {project.youtube && (
+                                <a
+                                    href={project.youtube}
+                                    class="btn"
+                                    target="_blank"
+                                >
+                                    <Youtube />
+                                    Youtube
+                                </a>
+                            )}
+                            <div class="project-github">
+                                {project.GitHub.map((repo) => (
+                                    <a
+                                        href={repo.url}
+                                        target="_blank"
+                                        class="btn"
+                                    >
+                                        <GitHub />
+                                        {repo.name}
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    </article>
+                ))
+            }
+        </div>
+    </div>
+</section>
+<style>
+    .section-projects {
+        margin-top: 3rem;
+        font-family: "Poppins", sans-serif;
+    }
+    .section-projects__container {
+        padding-inline: clamp(1rem, 5vw, 80px);
+        display: flex;
+        align-items: start;
+        gap: 1rem;
+    }
+    .section-projects__title {
+        display: flex;
+        align-items: start;
+        font-size: 2rem;
+        font-weight: 500;
+        gap: 10px;
+        width: fit-content;
+        flex-wrap: nowrap;
+    }
+    .projects_container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    .project_container__item {
+        background: #ffffff;
+        padding: 1rem;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .tech-icon {
+        width: 15px;
+        height: 15px;
+    }
+    .tech-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        background-color: #1f2937;
+        border-radius: 20px;
+        padding: 2px 10px;
+    }
+    .tech-item__name {
+        color: #ffffff;
+        font-size: 0.8rem;
+    }
+    .project__details{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .tech-stack {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    .project-links {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    .btn {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        background: #53b5c5;
+        color: #ffffff;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-weight: 300;
+    }
+    .project-github {
+        display: flex;
+        gap: 10px;
+    }
+    .project-image-container{
+        overflow: hidden;
+        border-radius: 20px;
+    }
+    .project_img {
+        max-width: 100%;
+        height: auto;
+        transition: transform 0.3s ease-in-out;
+        object-fit: cover;
+    }
+    .project-image-container:hover .project_img{
+        transform: scale(1.1);
+    }
+    .project_title {
+        font-size: 1.8rem;
+        line-height: 2rem;
+        font-weight: 500;
+    }
+    .project_descripcion {
+        font-size: 1rem;
+    }
+
+    
+    @media (max-width: 564px) {
+        .section-projects__container{
+            display: flex;
+            flex-direction: column;
+        }
+        .projects_container{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    @media (min-width: 564px) and (max-width: 767px) {
+        .section-projects__container{
+            display: flex;
+            flex-direction: column;
+        }
+        .projects_container{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    @media(min-width: 768px) and (max-width: 1200px) {
+        .section-projects__container{
+            display: flex;
+            flex-direction: column;
+        }
+        .projects_container{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+</style>

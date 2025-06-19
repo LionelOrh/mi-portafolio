@@ -1,0 +1,192 @@
+---
+const trayectoria = [
+    {
+        carrera: "Certiprof",
+        año: "Octubre 2024",
+        desc_titulo:
+            "Certificación Profesional en Fundamentos de Scrum (SFPC™)",
+        desc_carrera:
+            "Validé mis conocimientos en gestión ágil de proyectos, enfocándome en entregas iterativas y mejora continua.",
+    },
+    {
+        carrera:
+            "Carrera Técnica en Computación e Informática (Beca integral PRONABEC)",
+        año: "Ene. 2021 - Dic. 2024",
+        desc_titulo: "Instituto de Educación Superior Privado Cibertec",
+        desc_carrera:
+            "Desarrollé habilidades full-stack con tecnologías modernas, aplicándolas en proyectos reales que combinaron arquitecturas robustas con experiencias de usuario intuitivas. Enfoque principal: Fundamentos sólidos: POO, análisis y diseño de sistemas. Bases de datos: MySQL, SQL Server y MongoDB (NoSQL). Tecnologías full-stack: Angular, React, Astro (frontend) y Spring Boot (backend).",
+    },
+];
+import Birrete from "../assets/birrete.webp";
+import Image from "astro/components/Image.astro";
+import Trayecto from "../assets/Icon/Trayecto.astro";
+---
+
+<section class="section_trayectoria" id="trayectoria">
+    <p class="section_title">
+        <Trayecto />
+        Trayectoria
+    </p>
+    <div class="section_trayectoria__container">
+        {
+            trayectoria.map((trayectoria) => (
+                <article class="container">
+                    <div class="left">
+                        <span class="left_title">{trayectoria.carrera}</span>
+                        <span class="left_año">{trayectoria.año}</span>
+                    </div>
+                    <div class="image-container">
+                        <Image
+                            src={Birrete}
+                            alt="Icono de sombrero"
+                            class="hat"
+                            width={60}
+                        />
+                    </div>
+                    <div class="right">
+                        <span class="right_title">
+                            {trayectoria.desc_titulo}
+                        </span>
+                        <span class="right_description">
+                            {trayectoria.desc_carrera}
+                        </span>
+                    </div>
+                </article>
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    .section_trayectoria {
+        margin-top: 2rem;
+        width: 100%;
+        padding-inline: clamp(1rem, 5vw, 80px);
+        font-family: "Poppins", sans-serif;
+    }
+    .section_trayectoria__container {
+        background: #2e9fb1;
+        max-width: 100%;
+        border-radius: 20px;
+    }
+    .section_title {
+        font-size: 2rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 2rem;
+    }
+    .container {
+        display: flex;
+        gap: 20px;
+        position: relative;
+        min-height: 100px;
+        padding: 50px;
+        color: rgb(255, 255, 255);
+    }
+    .left,
+    .right {
+        flex: 1;
+    }
+    .left {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        text-align: end;
+    }
+    .right {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .image-container {
+        position: relative;
+        min-width: 60px;
+    }
+    .hat {
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+        background-color: rgb(202, 202, 202);
+        border-radius: 50%;
+    }
+    .container:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        background: white;
+        z-index: 0;
+    }
+    .left_title,
+    .right_title {
+        font-size: 1.5rem;
+    }
+    /* 🧠 Pantallas mayores a 768px: diseño en fila */
+    @media (min-width: 768px) {
+        .container {
+            flex-direction: row;
+            text-align: initial;
+            padding: 50px;
+        }
+
+        .left_title,
+        .right_title {
+            font-size: 1.1rem;
+        }
+
+        .left_año,
+        .right_description {
+            font-size: 0.95rem;
+        }
+
+        .left {
+            align-items: flex-end;
+            text-align: right;
+        }
+
+        .right {
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .image-container {
+            min-width: 60px;
+            height: auto;
+        }
+    }
+
+    @media (max-width: 675px) {
+
+        .container {
+            padding: 1.5rem 1rem;
+            gap: 16px;
+        }
+
+        .left_title,
+        .right_title {
+            font-size: 1.1rem;
+        }
+
+        .left_año,
+        .right_description {
+            font-size: 0.90rem;
+        }
+
+        .hat {
+            width: 45px;
+            height: 45px;
+        }
+
+        .image-container {
+            min-width: 45px;
+            height: 45px;
+        }
+    }
+</style>

@@ -1,0 +1,224 @@
+---
+import Tech from "../assets/Icon/Tech.astro";
+
+const technologies = [
+    {
+        category: "FrontEnd",
+        icons: [
+            {
+                name: "Angular",
+                src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg",
+            },
+            {
+                name: "React",
+                src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+            },
+            {
+                name: "Html",
+                src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
+            },
+            {
+                name: "CSS",
+                src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
+            },
+            {
+                name: "JavaScript",
+                src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+            },
+            {
+                name: "TypScript",
+                src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+            },
+        ],
+    },
+    {
+        category: "Backend",
+        icons: [
+            {
+                name: "Spring Boot",
+                src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg",
+            },
+            {
+                name: "Java",
+                src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
+            },
+            {
+                name: "MySql",
+                src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
+            },
+            {
+                name: "Sql",
+                src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original-wordmark.svg",
+            },
+        ],
+    },
+    {
+        category: "Aprendiendo",
+        icons: [
+            {
+                name: "AWS",
+                src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg",
+            },
+            {
+                name: "Taailwind",
+                src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+            },
+            {
+                name: "Astro",
+                src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/astro/astro-original.svg",
+            },
+            {
+                name: "Python",
+                src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+            },
+        ],
+    },
+    {
+        category: "Herramientas",
+        icons: [
+            {
+                name: "VS Code",
+                src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg",
+            },
+            {
+                name: "Git",
+                src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+            },
+            {
+                name: "Insomnia",
+                src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/insomnia/insomnia-original.svg",
+            },
+            {
+                name: "GitHub",
+                src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
+            },
+            {
+                name: "Figma",
+                src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg",
+            },
+        ],
+    },
+];
+---
+
+<section class="section-tech" id="skill">
+    <div class="section-tech_container">
+        <span class="tech-title"> <Tech />Tecnologías</span>
+        <div class="tech-grid">
+            {
+                technologies.map((tech) => (
+                    <article class="tech-card">
+                        <h3 class="tech-card-title">{tech.category}</h3>
+                        <div class="icons">
+                            {tech.icons.map((icon) => (
+                                <div class="icon-item">
+                                    <img src={icon.src} alt={icon.name} />
+                                    <p>{icon.name}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </article>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .section-tech {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        font-family: "Poppins", sans-serif;
+    }
+    .section-tech_container {
+        padding-inline: clamp(1rem, 5vw, 80px);
+        max-width: 100%;
+    }
+    .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        gap: 1rem;
+        padding: 0px 8rem;
+    }
+    .tech-title {
+        font-size: 2rem;
+        font-weight: 500;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .tech-card {
+        background: rgb(255, 255, 255);
+        text-align: center;
+        border-radius: 10px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .tech-card-title {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .icons {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        justify-items: center;
+    }
+    .icon-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .icon-item p {
+        font-size: 13px;
+    }
+
+    .icon-item img {
+        width: 100px;
+        height: auto;
+    }
+    @media (max-width: 564px) {
+        .section-tech {
+            width: 100%; /* Reducimos el ancho para que no se desborde */
+        }
+
+        .about-title {
+            font-size: 30px; /* Hacemos el título un poco más pequeño */
+        }
+        .icons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 3 columnas */
+            gap: 15px;
+            justify-items: center;
+        }
+        .icon-item img {
+            width: 50px;
+            height: auto;
+        }
+    }
+    @media (min-width: 564px) and (max-width: 767px) {
+
+        .icon-item img {
+            width: 50px;
+            height: auto;
+        }
+    }
+    @media (min-width: 768px) and (max-width: 1200px) {
+        .icon-item img {
+            width: 50px;
+            height: auto;
+        }
+        .icons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 3 columnas */
+            gap: 15px;
+            justify-items: center;
+        }
+    }
+</style>

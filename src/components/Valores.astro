@@ -1,0 +1,43 @@
+<section class="tag-list__valores" aria-labelledby="valores-title">
+    <ul class="inner" role="list">
+        <li class="tag autodidacta" role="listitem">AUTODIDACTA</li>
+        <li class="tag responsable" role="listitem">RESPONSABLE</li>
+        <li class="tag curioso" role="listitem">CURIOSO</li>
+    </ul>
+</section>
+
+<style>
+    /**Estilos para la tarjeta de valores */
+    .tag-list__valores {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+    .inner {
+        width: fit-content;
+        display: flex;
+        gap: 2rem;
+        animation: loop 15s linear infinite;
+        align-items: center;
+    }
+    .tag {
+        font-size: clamp(1.5rem, 4vw, 3.75rem);
+    }
+    .autodidacta {
+        font-family: "Radio Canada", sans-serif;
+    }
+    .responsable {
+        font-family: "Shrikhand", serif;
+    }
+    .curioso {
+        font-family: "Slabo 27px", serif;
+    }
+    @keyframes loop {
+        0% {
+            transform: translateX(5%);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+</style>

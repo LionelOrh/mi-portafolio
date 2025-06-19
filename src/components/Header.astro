@@ -1,0 +1,61 @@
+<header class="header">
+    <nav class="nav" id="nav">
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a href="#proyectos" class="nav-link">Proyectos</a>
+            </li>
+            <li class="nav-item">
+                <a href="#skill" class="nav-link">Tecnología</a>
+            </li>
+            <li class="nav-item">
+                <a href="#trayectoria" class="nav-link">Trayectoría</a>
+            </li>
+            <li class="nav-item">
+                <a href="#sobre-mi" class="nav-link">Sobre mí</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<style>
+    .header{
+        position: fixed;
+        margin: top;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        z-index: 1000;
+        font-family: "Poppins", sans-serif;
+    }
+    .nav{
+        transition: 
+        background 0.4s ease-in-out,
+        padding 0.4s ease-in-out;
+        border-radius: 20px;
+    }
+    .nav-list{
+        display: flex;
+        gap: 30px;
+    }
+    .scrolled{
+        background: rgba(0, 0, 0, 0.2); 
+        backdrop-filter: blur(80px);
+        padding: 10px 10px;
+        border: 0.1px solid rgb(148, 148, 148);
+    }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded",()=>{
+        const nav = document.getElementById("nav");
+        if(!nav) return;
+        window.addEventListener("scroll",()=>{
+            if(window.scrollY>50){
+                nav.classList.add("scrolled");
+            }else{
+                nav.classList.remove("scrolled");
+            }
+        })
+    });
+</script>
