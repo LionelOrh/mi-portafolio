@@ -20,14 +20,15 @@
 <style>
     .header {
         position: fixed;
-        margin: top;
         width: 100%;
         display: flex;
+        left: 0;
         justify-content: center;
         align-items: center;
         margin-top: 10px;
         z-index: 1000;
         font-family: "Poppins", sans-serif;
+        box-sizing: border-box;
     }
     .nav {
         transition:
@@ -43,7 +44,7 @@
         margin: 0;
         list-style: none;
     }
-    .nav-link{
+    .nav-link {
         text-decoration: none;
         color: #000000;
         padding: 5px 10px;
@@ -53,6 +54,19 @@
         backdrop-filter: blur(80px);
         padding: 10px 10px;
         border: 0.1px solid rgb(148, 148, 148);
+        
+    }
+    @media (max-width: 564px) {
+        .nav-list {
+            display: flex;
+            gap: 15px;
+        }
+        .nav-link {
+            text-decoration: none;
+            color: #000000;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+        }
     }
 </style>
 <script>
