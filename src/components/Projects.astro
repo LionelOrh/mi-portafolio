@@ -9,7 +9,8 @@ import Link from "../assets/Icon/Link.astro";
 import Constructora from "../assets/constructora.webp";
 import Youtube from "../assets/Icon/YoutubeMini.astro";
 import Image from "astro/components/Image.astro";
-import AosInit from "../components/AOSInit.jsx";
+import PruebaTecnica from "../assets/PruebaTecnicaTicTecnologie.webp";
+
 const projects = [
     {
         title: "Sistema de Autenticación y Autorización",
@@ -162,10 +163,41 @@ const projects = [
             },
         ],
     },
+    {
+        title: "Prueba Técnica - TIC-Technologies",
+        description:
+            "Aplicación web desarrollada como parte de una prueba técnica para la empresa TIC-Technologies. Permite calcular bonificaciones promocionales según reglas de negocio, a partir de productos ingresados por el usuario. Cuenta con formulario dinámico, tablas interactivas y conexión a una API REST construida con FastAPI en Python. El frontend fue implementado en React con Vite y desplegado en Vercel.",
+        image: PruebaTecnica,
+        link: "https://prueba-tecnica-bonificaciones-front.vercel.app/",
+        youtube: "",
+        GitHub: [
+            {
+                name: "Backend",
+                url: "https://github.com/LionelOrh/PruebaTecnica-Bonificaciones-BackEnd.git",
+            },
+            {
+                name: "Frontend",
+                url: "https://github.com/LionelOrh/PruebaTecnica-Bonificaciones-FrontEnd.git",
+            },
+        ],
+        technologies: [
+            {
+                name: "Python",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+            },
+            {
+                name: "React",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+            },
+            {
+                name: "Vite",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vite/vite-original.svg",
+            },
+        ],
+    },
 ];
 ---
 
-<AosInit client:load />
 <section class="section-projects" id="proyectos">
     <div class="section-projects__container">
         <span class="section-projects__title">
