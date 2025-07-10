@@ -169,15 +169,37 @@ import Valores from "../components/Valores.astro";
     }
 
     .info__descarga {
-        background: #9ab099;
-        padding: 10px;
-        border-radius: 20px;
+        background: linear-gradient(135deg, #9AB099, #558c52);
+        padding: 12px 24px;
+        border-radius: 25px;
         color: #ffffff;
         font-family: "Poppins", sans-serif;
-        font-weight: 500;
-        margin-top: 1rem;
+        font-weight: 600;
+        font-size: 16px;
+        margin-top: 1.5rem;
         display: inline-block;
         text-decoration: none;
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .info__descarga:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        background: linear-gradient(135deg, #9AB099, #425641);
+    }
+
+    .info__descarga::before {
+        content: "📥";
+        margin-right: 8px;
+        font-size: 18px;
+    }
+
+    .info__descarga:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 10px rgba(99, 102, 241, 0.3);
     }
 
     .section-hero__info-image {
@@ -297,6 +319,14 @@ import Valores from "../components/Valores.astro";
         display: flex;
         justify-content: center;
         align-items: center;
+        
+    }
+    .item{
+        transition: transform 0.3s ease;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .item:hover{
+        transform: translateY(-5px);
     }
 
     /* Media Queries */
@@ -358,8 +388,10 @@ import Valores from "../components/Valores.astro";
             font-size: 1rem;
         }
         .info__descarga {
-            margin-top: 1.5rem;
-            padding: 10px 20px;
+            margin-top: 2rem;
+            padding: 14px 28px;
+            font-size: 16px;
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
         }
         .section-hero__info-image {
             display: flex;
@@ -431,8 +463,10 @@ import Valores from "../components/Valores.astro";
             font-size: 1rem;
         }
         .info__descarga {
-            margin-top: 1.5rem;
-            padding: 10px 20px;
+            margin-top: 2rem;
+            padding: 14px 28px;
+            font-size: 16px;
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
         }
         .image-profile {
             object-fit: cover;
