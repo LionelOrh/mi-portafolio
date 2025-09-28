@@ -15,7 +15,7 @@ const projects = [
     {
         title: "Sistema de Autenticación y Autorización",
         description:
-            "Sistema de autenticación y autorización con Spring Security y Angular. Implementa autenticación basada en JWT para sesiones seguras y gestión de roles. Las contraseñas se almacenan de forma cifrada para mayor seguridad. El backend está desarrollado con Spring Boot y MySQL como base de datos, y el frontend con Angular.",
+            "Sistema con autenticación JWT y gestión de roles en Spring Security y Angular. Implementa almacenamiento cifrado de contraseñas y control de acceso por niveles de usuario.",
         image: ProyectoIniciarSesion,
         link: "",
         youtube: "https://youtu.be/7nzJP-i-2mc",
@@ -47,7 +47,7 @@ const projects = [
     {
         title: "Sistema de Accesos y gestión de Roles",
         description:
-            "Sistema de gestión de accesos y roles con autenticación de usuarios y control de permisos. Incorpora la lectura de códigos de barras mediante escáner para agilizar el registro de accesos. Desarrollado con Spring Boot en el backend, Angular en el frontend y MySQL como base de datos.",
+            "Aplicación para gestión de accesos con autenticación de usuarios y control de permisos. Integra lectura de códigos de barras para agilizar el registro de ingresos.",
         image: SstemaAccesos,
         link: "",
         youtube: "",
@@ -79,7 +79,7 @@ const projects = [
     {
         title: "Sistema de Envío Masivo de Mensajes a WhatsApp",
         description:
-            "Sistema para el envío masivo de mensajes a WhatsApp, desarrollado con Spring Boot. Permite la automatización del envío de mensajes a múltiples destinatarios a través de una API. Las pruebas y consultas a la API se realizan con Insomnia.",
+            "Servicio en Spring Boot que automatiza el envío de mensajes masivos a WhatsApp mediante API. Incluye interfaz para gestión de plantillas y monitoreo de entregas.",
         image: SistemaMMW,
         link: "",
         youtube: "https://youtu.be/iIf70ux5yyM",
@@ -103,7 +103,7 @@ const projects = [
     {
         title: "Gestión de Registros (CRUD)",
         description:
-            "Desarrollo de un CRUD que permite crear, leer, actualizar y eliminar registros. El backend está construido con Spring Boot, proporcionando una API REST segura y eficiente. El frontend está desarrollado con React y estilizado con Tailwind CSS, ofreciendo una interfaz moderna y responsiva.",
+            "Aplicación CRUD con API REST en Spring Boot y frontend en React con Tailwind CSS. Implementa operaciones completas para crear, leer, actualizar y eliminar registros.",
         image: ProyectoCRUD,
         youtube: "https://youtu.be/ZTEP-COi5qI",
         GitHub: [
@@ -138,7 +138,7 @@ const projects = [
     {
         title: "Constructora JAIL.SAC",
         description:
-            "Desarrollo de un sitio web, innovadora para la industria de construcción que integra tecnologías modernas para optimizar procesos y mejorar eficiencia. ",
+            "Sitio web corporativo para empresa constructora con diseño moderno y responsive. Desarrollado con Astro para optimizar rendimiento y experiencia de usuario en diferentes dispositivos.",
         image: Constructora,
         link: "https://proyecto-jail-constructora-sac.vercel.app/",
         youtube: "",
@@ -166,7 +166,7 @@ const projects = [
     {
         title: "Prueba Técnica - TIC-Technologies",
         description:
-            "Aplicación web desarrollada como parte de una prueba técnica para la empresa TIC-Technologies. Permite calcular bonificaciones promocionales según reglas de negocio, a partir de productos ingresados por el usuario. Cuenta con formulario dinámico, tablas interactivas y conexión a una API REST construida con FastAPI en Python. El frontend fue implementado en React con Vite y desplegado en Vercel.",
+            "Aplicación para cálculo de bonificaciones con formularios dinámicos y tablas interactivas. Backend en FastAPI (Python) y frontend en React, con despliegue continuo en Vercel.",
         image: PruebaTecnica,
         link: "https://prueba-tecnica-bonificaciones-front.vercel.app/",
         youtube: "",
@@ -199,140 +199,162 @@ const projects = [
 ---
 
 <section class="section-projects" id="proyectos">
-    <div class="section-projects__container">
-        <span class="section-projects__title">
-            <Code />
-            <span>Mis Proyectos</span>
-        </span>
+    <div class="section-projects__title">
+        <Code />
+        <span>Mis Proyectos</span>
+    </div>
 
-        <div class="projects_container">
-            {
-                projects.map((project) => (
-                    <article
-                        class="project_container__item"
-                        data-aos="fade-right"
-                        data-aos-offset="300"
-                        data-aos-easing="ease-in-sine"
-                    >
-                        <div class="project-image-container">
-                            <Image
-                                src={project.image}
-                                alt={project.title}
-                                class="project_img"
-                            />
-                        </div>
+    <div class="projects_container">
+        {
+            projects.map((project) => (
+                <article class="project_container__item">
+                    <div class="project-image-container">
+                        <Image
+                            src={project.image}
+                            alt={project.title}
+                            class="project_img"
+                        />
+                    </div>
 
-                        <div class="tech-stack">
-                            {project.technologies.map((tech) => (
-                                <div class="tech-item">
-                                    <img
-                                        src={tech.icon}
-                                        alt={tech.name}
-                                        class="tech-icon"
-                                        loading="lazy"
-                                    />
-                                    <span class="tech-item__name">
-                                        {tech.name}
-                                    </span>
-                                </div>
+                    <div class="tech-stack">
+                        {project.technologies.map((tech) => (
+                            <div class="tech-item">
+                                <img
+                                    src={tech.icon}
+                                    alt={tech.name}
+                                    class="tech-icon"
+                                    loading="lazy"
+                                />
+                                <span class="tech-item__name">
+                                    {tech.name}
+                                </span>
+                            </div>
+                        ))}
+                    </div>
+                    <div class="project__details">
+                        <span class="project_title"> {project.title}</span>
+                        <p class="project_descripcion">
+                            {project.description}
+                        </p>
+                    </div>
+                    <div class="project-links">
+                        {project.link && (
+                            <a
+                                href={project.link}
+                                class="btn"
+                                target="_blank"
+                            >
+                                <Link />
+                                Ver proyecto
+                            </a>
+                        )}
+
+                        {project.youtube && (
+                            <a
+                                href={project.youtube}
+                                class="btn"
+                                target="_blank"
+                            >
+                                <Youtube />
+                                Youtube
+                            </a>
+                        )}
+                        <div class="project-github">
+                            {project.GitHub.map((repo) => (
+                                <a
+                                    href={repo.url}
+                                    target="_blank"
+                                    class="btn"
+                                >
+                                    <GitHub />
+                                    {repo.name}
+                                </a>
                             ))}
                         </div>
-                        <div class="project__details">
-                            <span class="project_title"> {project.title}</span>
-                            <p class="project_descripcion">
-                                {project.description}
-                            </p>
-                        </div>
-                        <div class="project-links">
-                            {project.link && (
-                                <a
-                                    href={project.link}
-                                    class="btn"
-                                    target="_blank"
-                                >
-                                    <Link />
-                                    Ver proyecto
-                                </a>
-                            )}
-
-                            {project.youtube && (
-                                <a
-                                    href={project.youtube}
-                                    class="btn"
-                                    target="_blank"
-                                >
-                                    <Youtube />
-                                    Youtube
-                                </a>
-                            )}
-                            <div class="project-github">
-                                {project.GitHub.map((repo) => (
-                                    <a
-                                        href={repo.url}
-                                        target="_blank"
-                                        class="btn"
-                                    >
-                                        <GitHub />
-                                        {repo.name}
-                                    </a>
-                                ))}
-                            </div>
-                        </div>
-                    </article>
-                ))
-            }
-        </div>
+                    </div>
+                </article>
+            ))
+        }
     </div>
 </section>
+
 <style>
     .section-projects {
-        margin-top: 3rem;
-        font-family: "Poppins", sans-serif;
-    }
-    .section-projects__container {
         padding-inline: clamp(1rem, 5vw, 80px);
+        font-family: "Poppins", sans-serif;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
         display: flex;
-        align-items: start;
-        gap: 1rem;
+        flex-direction: column;
+        align-items: center; /* Centra horizontalmente el contenido */
+        width: 100%;
+        box-sizing: border-box; /* Esta línea es crucial */
     }
+    
     .section-projects__title {
         display: flex;
-        align-items: start;
-        font-size: 2rem;
-        font-weight: 500;
+        align-items: center;
         gap: 10px;
-        width: fit-content;
-        flex-wrap: nowrap;
+        color: #ffffff;
+        text-shadow: 0 2px 10px rgba(154, 176, 153, 0.3);
+        margin-bottom: 30px;
+        width: 100%; /* Para que el encabezado ocupe todo el ancho disponible */
+        max-width: 1200px; /* Igual que el timeline para consistencia */
     }
+    
+    .section-projects__title span {
+        font-size: 1.8rem;
+        font-weight: 500;
+    }
+    
     .projects_container {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        width: 100%;
+        max-width: 1200px; /* Mismo ancho máximo que en Experiencia */
+        margin: 0 auto; /* Centra el contenedor horizontalmente */
     }
+    
     .project_container__item {
-        background: #ffffff;
-        padding: 1rem;
+        background: linear-gradient(135deg, #2a2d3a 0%, #333642 100%);
+        padding: 1.25rem;
         border-radius: 20px;
         display: flex;
         flex-direction: column;
         gap: 20px;
+        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        /* Aseguramos que el padding no afecte el cálculo del espaciado */
+        box-sizing: border-box;
     }
+    
+    .project_container__item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px rgba(31, 38, 135, 0.25);
+    }
+    
     .tech-icon {
         width: 15px;
         height: 15px;
     }
+    
     .tech-item {
         display: flex;
         align-items: center;
         gap: 5px;
-        background-color: #1f2937;
+        background-color: rgba(74, 72, 122, 0.5);
         border-radius: 20px;
         padding: 2px 10px;
+        backdrop-filter: blur(4px);
     }
+    
     .tech-item__name {
         color: #ffffff;
         font-size: 0.8rem;
     }
+    
     .project__details {
         display: flex;
         flex-direction: column;
@@ -343,79 +365,87 @@ const projects = [
         display: flex;
         gap: 10px;
         align-items: center;
+        flex-wrap: wrap; /* Permite que las tecnologías fluyan a la siguiente línea si es necesario */
     }
+    
     .project-links {
         display: flex;
         gap: 10px;
         flex-wrap: wrap;
-    }
+        }
+    
     .btn {
         display: flex;
         align-items: center;
         gap: 5px;
-        background: #53b5c5;
+        background: linear-gradient(135deg, #2c5b61 0%, #3d8490 100%);
         color: #ffffff;
         padding: 5px 10px;
         border-radius: 20px;
         font-weight: 300;
         text-decoration: none;
     }
+    
     .project-github {
         display: flex;
         gap: 10px;
     }
+    
     .project-image-container {
         width: 100%;
-        height: 300px;
+        height: 200px;
         overflow: hidden;
         border-radius: 20px;
     }
+    
     .project_img {
         max-width: 100%;
         height: 100%;
         transition: transform 0.3s ease-in-out;
         object-fit: cover;
     }
+    
     .project-image-container:hover .project_img {
         transform: scale(1.1);
     }
+    
     .project_title {
-        font-size: 1.8rem;
-        line-height: 2rem;
+        font-size: 1.5rem;
+        line-height: 1.8rem;
         font-weight: 500;
+        color: #ffffff;
+        margin-bottom: 0.5rem;
+        background: linear-gradient(90deg, #ffffff, #9AB099);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
+    
     .project_descripcion {
-        font-size: 1rem;
+        font-size: 0.9rem;
+        color: #e0e0e0;
+        line-height: 1.5;
     }
 
-    @media (max-width: 564px) {
-        .section-projects__container {
-            display: flex;
-            flex-direction: column;
-        }
+    /* Diseño responsive adaptado del componente Experiencia */
+    @media screen and (max-width: 768px) {
         .projects_container {
-            display: flex;
-            flex-direction: column;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        /* Ajuste de margen superior para mejor espaciado en móvil */
+        .project-links {
+            margin-top: 1rem;
         }
     }
-    @media (min-width: 564px) and (max-width: 767px) {
-        .section-projects__container {
-            display: flex;
-            flex-direction: column;
-        }
+
+    /* Diseño para tablets */
+    @media screen and (min-width: 768px) and (max-width: 992px) {
         .projects_container {
-            display: flex;
-            flex-direction: column;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
         }
     }
-    @media (min-width: 768px) and (max-width: 1200px) {
-        .section-projects__container {
-            display: flex;
-            flex-direction: column;
-        }
-        .projects_container {
-            display: flex;
-            flex-direction: column;
-        }
-    }
+    
 </style>

@@ -4,106 +4,188 @@ import Image from "astro/components/Image.astro";
 import Me from "../assets/me.webp";
 ---
 
-<section class="section_about" id="sobre-mi">
-    <div class="section_about__container">
-        <h1 class="about-title">
-            <User class="w-10 h-10" />Sobre mí
-        </h1>
-        <article class="section_about_info_details" data-aos="zoom-in">
-            <div class="about_image">
-                <Image src={Me} alt="Lionel Erix" class="about_img" />
-            </div>
-            <div class="info_user">
-                <p class="info_name">Lionel Erix</p>
-                <p class="info_text">
-                    💻 Hola, soy Lionel Erix, un apasionado del desarrollo web
-                    con formación en Computación e Información gracias a
-                    PRONABEC. Mi interés por la tecnología comenzó de manera
-                    autodidacta, explorando diversas herramientas y
-                    metodologías. A lo largo de mi formación, he trabajado en
-                    proyectos personales y académicos, aplicando buenas
-                    prácticas de desarrollo y utilizando metodologías ágiles
-                    como Scrum para optimizar la gestión del trabajo.
-                </p>
-                <p class="info_text">
-                    🚀 Tengo experiencia en el desarrollo de aplicaciones web
-                    utilizando tecnologías como Java, Spring Boot y frameworks
-                    modernos de frontend, priorizando la escalabilidad, el
-                    rendimiento y la seguridad. Me motiva analizar problemas
-                    complejos y diseñar soluciones eficientes, combinando
-                    tecnología con estrategias óptimas de desarrollo. Siempre
-                    estoy en búsqueda de nuevos desafíos y oportunidades para
-                    seguir aprendiendo, mejorando mis habilidades y aplicando
-                    mis conocimientos en proyectos innovadores.
-                </p>
-            </div>
-        </article>
+<section class="section-about" id="sobre-mi">
+    <div class="section-title">
+        <User />
+        <h2>Sobre mí</h2>
+    </div>
+    
+    <div class="about-container">
+        <div class="about-image-wrapper">
+            <Image src={Me} alt="Lionel Erix" class="about-image" />
+        </div>
+        
+        <div class="about-content">
+            <h3 class="about-name">Lionel Erix</h3>
+            <p class="about-text">
+                💻 Hola, soy Lionel, un <span class="highlight">desarrollador Full-Stack</span> apasionado por crear <span class="highlight">soluciones tecnológicas</span> impactantes. Mi formación en Computación e Informática, gracias a una <span class="highlight">beca integral de PRONABEC</span>, me ha permitido desarrollar proyectos que combinan arquitecturas sólidas con interfaces intuitivas.
+            </p>
+            <p class="about-text">
+                🚀 Me especializo en el desarrollo con <span class="highlight">Spring Boot</span>, <span class="highlight">Angular</span> y <span class="highlight">React</span>, aplicando <span class="highlight">metodologías ágiles</span> para optimizar procesos. Disfruto enfrentando desafíos técnicos complejos y transformándolos en soluciones elegantes y escalables.
+            </p>
+            <p class="about-text">
+                🔍 Siempre estoy explorando <span class="highlight">nuevas tecnologías</span> y mejores prácticas, buscando constantemente oportunidades para crecer como profesional y aportar valor a <span class="highlight">proyectos innovadores</span>.
+            </p>
+        </div>
     </div>
 </section>
 
 <style>
-    .section_about {
+    .section-about {
         padding-inline: clamp(1rem, 5vw, 80px);
-        max-width: 100%;
-        margin-top: 4rem;
-        margin-bottom: 5rem;
         font-family: "Poppins", sans-serif;
+        margin-block: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
     }
-    .about-title {
-        font-size: 2rem;
-        font-weight: 500;
+
+    .section-title {
         display: flex;
         align-items: center;
         gap: 10px;
-        margin-bottom: 2rem;
-    }
-    .section_about_info_details {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        background: #674b54;
-        padding: 30px;
-        border-radius: 20px;
-    }
-    .about_image {
+        color: #ffffff;
+        text-shadow: 0 2px 10px rgba(154, 176, 153, 0.3);
+        margin-bottom: 30px;
         width: 100%;
-        height: 100%;
+        max-width: 1200px;
     }
-    .about_img {
+
+    .section-title h2 {
+        font-size: 1.8rem;
+        font-weight: 500;
+        margin: 0;
+    }
+
+    .about-container {
+        display: grid;
+        grid-template-columns: minmax(300px, 1fr) 2fr;
+        gap: 3rem;
+        /* Nuevo fondo con un tono diferente pero armonioso con la paleta del sitio */
+        background: linear-gradient(135deg, #3a3852 0%, #4a485e 100%);
+        padding: 3rem;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 1200px;
+        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    .about-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px rgba(31, 38, 135, 0.25);
+    }
+
+    .about-image-wrapper {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgb(48, 48, 48);
+        transform: rotate(-2deg);
+        position: relative;
+        border-radius: 1px solid rgba(154, 176, 153, 0.7);
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.386);
+    
+    }
+
+    .about-image {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 10px;
+        border-radius: 15px;
+        transition: filter 0.3s ease;
     }
-    .info_user {
+
+
+    .about-content {
         display: flex;
         flex-direction: column;
-        gap: 20px;
-        color: #fff; /* Texto blanco para contraste con fondo oscuro */
+        gap: 1rem;
+        color: rgba(255, 255, 255, 0.9);
     }
-    .info_name {
+
+    .about-name {
         font-size: 1.5rem;
-        font-weight: bold;
+        font-weight: 600;
+        color: #9AB099;
         margin: 0;
+        position: relative;
+        display: inline-block;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.5rem;
+        letter-spacing: 0.01em;
     }
-    .info_text {
+
+    .about-name::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 2px;
+        background-color: rgba(154, 176, 153, 0.7);
+        border-radius: 2px;
+        transition: width 0.3s ease;
+    }
+
+    .about-container:hover .about-name::after {
+        width: 100px;
+    }
+
+    .about-text {
         margin: 0;
-        line-height: 1.6; /* Mejor legibilidad */
-        max-width: 100%; /* Evita desbordamiento */
+        line-height: 1.7;
+        font-size: 1rem;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        letter-spacing: 0.01em;
     }
+
+    /* Estilo para palabras resaltadas */
+    .highlight {
+        color: #9AB099;
+        font-weight: 600;
+        position: relative;
+        white-space: nowrap;
+    }
+
+
+    /* Activamos el subrayado al hacer hover sobre el contenedor */
+    .about-container:hover .highlight::after {
+        width: 100%;
+    }
+
+    .about-text:not(:last-child) {
+        margin-bottom: 0.8rem;
+    }
+
     @media (max-width: 830px) {
-        .section_about {
-            margin-top: 4rem;
-            margin-bottom: 5rem;
-        }
-        .section_about_info_details {
+        .about-container {
             grid-template-columns: 1fr;
+            padding: 1.5rem;
         }
-        .about_img {
-            width: 100%;
-            height: auto;
+
+        .about-image-wrapper {
+            height: 320px;
+            /* Reducimos la rotación en dispositivos móviles */
+            transform: perspective(800px) rotateY(-5deg);
+            margin-bottom: 1rem;
         }
-        .info_text {
+
+        .about-name {
+            margin-top: 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .about-image-wrapper {
+            height: 250px;
+        }
+
+        .about-text {
             font-size: 0.9rem;
         }
     }

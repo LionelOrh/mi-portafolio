@@ -17,7 +17,7 @@ import Valores from "../components/Valores.astro";
             <header>
                 <p class="estado">DISPONIBLE PARA TRABAJAR</p>
                 <h1 class="title__especialidad">
-                    ¡Hola! Soy un Desarrollador FullStack.
+                    ¡Hola! Soy un <span class="highlight-text">Desarrollador</span> <span class="highlight-secondary">FullStack</span>.
                 </h1>
             </header>
             <p class="info__descripcion">
@@ -33,7 +33,7 @@ import Valores from "../components/Valores.astro";
             >
         </article>
         <article class="section-hero__info-image">
-            <div class="mini__project" data-aos="zoom-out-right">
+            <div class="mini__project">
                 <Image src={miniproyects} alt="" class="imagen-miniprojects" />
                 <div class="info_user_project">
                     <div class="info_user_project__details">
@@ -46,10 +46,10 @@ import Valores from "../components/Valores.astro";
                     >
                 </div>
             </div>
-            <div class="photo__profile" data-aos="zoom-out-left">
+            <div class="photo__profile">
                 <Image src={profile} alt="" class="image-profile" />
             </div>
-            <div class="desc" data-aos="zoom-out-up">
+            <div class="desc">
                 <div class="desc_container">
                     <span class="desc_text">
                         Transformando ideas en soluciones técnicas robustas con
@@ -58,7 +58,7 @@ import Valores from "../components/Valores.astro";
                     <Valores />
                 </div>
             </div>
-            <div class="social__media" data-aos="zoom-in-up">
+            <div class="social__media">
                 <a
                     href="https://www.figma.com/@lioodev"
                     class="item"
@@ -108,6 +108,20 @@ import Valores from "../components/Valores.astro";
         width: 100%;
         height: 100dvh;
         align-items: center;
+        position: relative;
+    }
+
+    .section-hero::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at top right, rgba(74, 72, 122, 0.2), transparent 60%),
+                    radial-gradient(circle at bottom left, rgba(93, 217, 184, 0.1), transparent 50%);
+        pointer-events: none;
+        z-index: -1;
     }
 
     .section-hero__container {
@@ -115,10 +129,25 @@ import Valores from "../components/Valores.astro";
         grid-template-columns: repeat(2, 1fr);
         padding-inline: clamp(1rem, 5vw, 80px);
         gap: 20px;
+        width: 100%;
+        position: relative;
+        z-index: 1;
     }
 
     .section-hero__info-user {
         max-width: 80%;
+        animation: fadeIn 0.8s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .estado {
@@ -127,10 +156,19 @@ import Valores from "../components/Valores.astro";
         gap: 8px;
         font-weight: 600;
         color: #2ecc71;
-        padding: 10px;
-        background: #b2e4dc;
-        border-radius: 20px;
+        padding: 10px 18px;
+        background: rgba(46, 204, 113, 0.15);
+        border: 1px solid rgba(46, 204, 113, 0.3);
+        border-radius: 25px;
         margin: 0;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 4px 12px rgba(46, 204, 113, 0.15);
+        transition: all 0.3s ease;
+    }
+
+    .estado:hover {
+        background: rgba(46, 204, 113, 0.2);
+        transform: translateY(-2px);
     }
 
     .estado::before {
@@ -141,16 +179,18 @@ import Valores from "../components/Valores.astro";
         background-color: currentColor;
         border-radius: 50%;
         animation: pulse 1.5s infinite;
+        box-shadow: 0 0 10px rgba(46, 204, 113, 0.7);
     }
 
     @keyframes pulse {
         0%,
         100% {
             opacity: 1;
+            transform: scale(1);
         }
         50% {
-            opacity: 0.3;
-            transform: scale(0.9);
+            opacity: 0.5;
+            transform: scale(0.8);
         }
     }
 
@@ -161,17 +201,39 @@ import Valores from "../components/Valores.astro";
         line-height: 1;
         margin-top: 2rem;
         margin-bottom: 2rem;
+        color: #ffffff;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .highlight-text {
+        background: linear-gradient(90deg, #9AB099, #558c52);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: none;
+    }
+
+    .highlight-secondary {
+        background: linear-gradient(90deg, #c4e7fd, #96c8f2);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: none;
     }
 
     .info__descripcion {
-        color: #4d4d4d;
+        color: #e0e0e0;
         font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        font-size: 1.05rem;
+        letter-spacing: 0.01em;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     }
 
     .info__descarga {
         background: linear-gradient(135deg, #9AB099, #558c52);
-        padding: 12px 24px;
-        border-radius: 25px;
+        padding: 14px 28px;
+        border-radius: 30px;
         color: #ffffff;
         font-family: "Poppins", sans-serif;
         font-weight: 600;
@@ -180,33 +242,53 @@ import Valores from "../components/Valores.astro";
         display: inline-block;
         text-decoration: none;
         transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        box-shadow: 0 6px 20px rgba(85, 140, 82, 0.4);
         position: relative;
         overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .info__descarga:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
-        background: linear-gradient(135deg, #9AB099, #425641);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(85, 140, 82, 0.5);
+        background: linear-gradient(135deg, #a5c0a4, #467a43);
     }
 
     .info__descarga::before {
         content: "📥";
-        margin-right: 8px;
+        margin-right: 10px;
         font-size: 18px;
+        display: inline-block;
+        vertical-align: middle;
+        transform: translateY(-1px);
     }
 
     .info__descarga:active {
         transform: translateY(0);
-        box-shadow: 0 2px 10px rgba(99, 102, 241, 0.3);
+        box-shadow: 0 3px 10px rgba(85, 140, 82, 0.3);
+    }
+
+    .info__descarga::after {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 100px;
+        background: rgba(255, 255, 255, 0.3);
+        top: -30px;
+        transform: rotate(35deg) translateX(-150px);
+        transition: transform 0.6s ease;
+    }
+
+    .info__descarga:hover::after {
+        transform: rotate(35deg) translateX(350px);
     }
 
     .section-hero__info-image {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         grid-template-rows: 300px 150px;
-        gap: 10px;
+        gap: 15px;
+        perspective: 1000px;
     }
 
     .mini__project {
@@ -217,6 +299,14 @@ import Valores from "../components/Valores.astro";
         width: 100%;
         height: 100%;
         box-sizing: border-box;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        border: 1px solid rgba(154, 176, 153, 0.2);
+    }
+
+    .mini__project:hover {
+        transform: translateY(-5px) rotateY(-3deg);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     }
 
     .imagen-miniprojects {
@@ -225,7 +315,11 @@ import Valores from "../components/Valores.astro";
         position: absolute;
         z-index: 0;
         object-fit: cover;
+        transition: transform 0.5s ease;
+        filter: brightness(0.9);
     }
+
+    
 
     .info_user_project {
         position: absolute;
@@ -234,69 +328,102 @@ import Valores from "../components/Valores.astro";
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 15px;
+        padding: 20px;
         box-sizing: border-box;
         width: 100%;
+        background: linear-gradient(to bottom, rgba(29, 28, 42, 0.7), transparent 20%, transparent 70%, rgba(29, 28, 42, 0.7));
     }
 
     .info_user_project__details {
         display: flex;
         flex-direction: column;
+        color: #ffffff;
+        font-family: "Poppins", sans-serif;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        font-weight: 500;
     }
 
     .info_user_project__direct-projects {
-        background: #c4e7fd;
+        background: rgba(196, 231, 253, 0.9);
         border-radius: 20px;
         display: flex;
         width: fit-content;
-        padding: 5px 10px;
-        text-decoration: none; /* Quita el subrayado del enlace */
-        color: #000; /* Color de texto legible */
-        cursor: pointer; /* Indica que es clicable */
+        padding: 8px 16px;
+        text-decoration: none;
+        color: #1D1C2A;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(5px);
+    }
+
+    .info_user_project__direct-projects:hover {
+        background: rgba(196, 231, 253, 1);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
     }
 
     .photo__profile {
         grid-column: span 3 / span 3;
         grid-column-start: 3;
-        background: rgb(87, 84, 81);
+        background: #2d2c3e;
         border-radius: 20px;
         overflow: hidden;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(154, 176, 153, 0.2);
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .photo__profile:hover {
+        transform: translateY(-5px) rotateY(3deg);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     }
 
     .image-profile {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: transform 0.5s ease;
+        filter: brightness(1.05) contrast(1.05);
+    }
+
+    .photo__profile:hover .image-profile {
+        transform: scale(1.02);
     }
 
     .desc {
         grid-column: span 3 / span 3;
         grid-row-start: 2;
-        background: linear-gradient(
-            135deg,
-            #888c6c 12%,
-            #ffffff 45%,
-            #888c6c 100%
-        );
+        background: linear-gradient(135deg, #333642 0%, #4a485e 50%, #333642 100%);
         display: flex;
         flex-direction: column;
         justify-content: center;
         border-radius: 20px;
         overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        border: 1px solid rgba(154, 176, 153, 0.15);
+        transition: transform 0.4s ease;
+    }
+
+    .desc:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
     }
 
     .desc_container {
-       display: flex;
-       flex-direction: column;
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
     }
 
     .desc_text {
         width: 100%;
         display: flex;
         font-family: "Poppins", sans-serif;
-        font-weight: 300;
-        padding: 0px 10px;
-        box-sizing: border-box;
+        font-weight: 400;
+        color: #e0e0e0;
+        margin-bottom: 10px;
     }
 
     .social__media {
@@ -306,12 +433,13 @@ import Valores from "../components/Valores.astro";
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(2, auto);
-        gap: 5px;
+        gap: 10px;
         justify-items: center;
+        align-items: center;
     }
 
     .social__media .item {
-        background-color: rgb(255, 255, 255);
+        background: rgba(255, 255, 255, 0.9);
         width: 50px;
         height: 50px;
         border-radius: 50%;
@@ -319,14 +447,15 @@ import Valores from "../components/Valores.astro";
         display: flex;
         justify-content: center;
         align-items: center;
-        
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    .item{
-        transition: transform 0.3s ease;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    .item:hover{
-        transform: translateY(-5px);
+    
+    .item:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        background: white;
     }
 
     /* Media Queries */
@@ -343,10 +472,7 @@ import Valores from "../components/Valores.astro";
             max-width: 100%;
         }
         .photo__profile {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            overflow: hidden;
+            display: none;
         }
         .image-profile {
             width: 100%;
@@ -354,7 +480,7 @@ import Valores from "../components/Valores.astro";
             object-fit: cover;
         }
         .title__especialidad {
-            font-size: 3.5rem;
+            font-size: 2.8rem;
         }
         .section-hero__info-image {
             display: flex;
@@ -364,6 +490,24 @@ import Valores from "../components/Valores.astro";
         .mini__project,
         .desc {
             display: none;
+        }
+        
+        .info__descarga {
+            
+            text-align: center;
+        }
+        
+        .social__media {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social__media .item {
+            width: 45px;
+            height: 45px;
         }
     }
 
@@ -381,7 +525,7 @@ import Valores from "../components/Valores.astro";
             text-align: center;
         }
         .title__especialidad {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             margin-top: 1rem;
         }
         .info__descripcion {
@@ -391,10 +535,13 @@ import Valores from "../components/Valores.astro";
             margin-top: 2rem;
             padding: 14px 28px;
             font-size: 16px;
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 6px 20px rgba(85, 140, 82, 0.3);
+            width: 80%;
+            text-align: center;
         }
         .section-hero__info-image {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             width: 100%;
@@ -416,12 +563,15 @@ import Valores from "../components/Valores.astro";
             font-size: 0.85rem;
         }
         .social__media {
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(2, auto);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
         }
         .social__media .item {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             padding: 8px;
         }
         .mini__project,
@@ -444,10 +594,12 @@ import Valores from "../components/Valores.astro";
         }
         .section-hero__container {
             display: flex;
+            gap: 30px;
         }
         .section-hero__info-image {
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
         .photo__profile {
             width: 250px;
@@ -456,7 +608,7 @@ import Valores from "../components/Valores.astro";
             overflow: hidden;
         }
         .title__especialidad {
-            font-size: 4rem;
+            font-size: 3.5rem;
             margin-top: 1rem;
         }
         .info__descripcion {
@@ -466,12 +618,19 @@ import Valores from "../components/Valores.astro";
             margin-top: 2rem;
             padding: 14px 28px;
             font-size: 16px;
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 6px 20px rgba(85, 140, 82, 0.3);
         }
         .image-profile {
             object-fit: cover;
             width: 100%;
             height: 100%;
+        }
+        
+        .social__media {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 20px;
         }
     }
 </style>

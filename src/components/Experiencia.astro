@@ -1,0 +1,224 @@
+---
+import Work from "../assets/Icon/Work.astro";
+const experiencia = [
+    {
+        puesto: "Desarrollador Frontend",
+        empresa: "TIC-TECHNOLOGIES",
+        periodo: "Julio 2025 - Septiembre 2025",
+        descripcion:
+            "Como parte del equipo de desarrollo en TIC-TECHNOLOGIES, he tenido la oportunidad de trabajar en proyectos de alto impacto tecnológico que abarcan soluciones web, móviles y de escritorio, aplicando diferentes stacks y fortaleciendo mis competencias como desarrollador full stack.",
+    },
+    {
+        puesto: "Desarrollador Web - Freelance",
+        empresa: "Jail Constructora Sac",
+        periodo: "Enero 2025 - Febrero 2025",
+        descripcion:
+            "Desarrollo de la página web corporativa de JAIL Constructora con Astro, incorporando un diseño moderno, responsive y optimizado para mejorar la presencia digital y la experiencia del usuario.",
+    },
+];
+---
+
+<section class="experiencia_section_container" id="experiencia">
+    <div class="experiencia_section_header">
+        <Work />
+        <h3>Experiencia Laboral</h3>
+    </div>
+    <section class="timeline">
+        {
+            experiencia.map((item) => (
+                <div class="timeline-item">
+                    {/* Punto indicador con efecto glow */}
+                    <div class="timeline-dot" />
+
+                    {/* Tarjeta de experiencia */}
+                    <div class="timeline-content">
+                        <div class="title-container">
+                            <h4 class="puesto">{item.puesto}</h4>
+                            <h5 class="empresa-periodo">
+                                {item.empresa}
+                            </h5>
+                             <span class="periodo">{item.periodo}</span>
+                        </div>
+                        <div class="description-container">
+                            <p class="descripcion">{item.descripcion}</p>
+                        </div>
+                    </div>
+                </div>
+            ))
+        }
+    </section>
+</section>
+<style>
+    .experiencia_section_container {
+        padding-inline: clamp(1rem, 5vw, 80px);
+        font-family: "Poppins", sans-serif;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centra horizontalmente el contenido */
+    }
+
+    .experiencia_section_header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 30px;
+        color: #ffffff;
+        width: 100%; /* Para que el encabezado ocupe todo el ancho disponible */
+        max-width: 1200px; /* Igual que el timeline para consistencia */
+    }
+
+    .experiencia_section_header h3 {
+        font-size: 1.8rem;
+        font-weight: 500;
+        text-shadow: 0 2px 10px rgba(154, 176, 153, 0.3);
+    }
+
+    /* Estilos para la línea de tiempo */
+    .timeline {
+        position: relative;
+        max-width: 1200px; /* Limita el ancho máximo */
+        padding: 20px 0;
+        margin: 0 auto; /* Centra el timeline horizontalmente */
+    }
+
+    /* Ajuste del contenedor principal para mejor centrado */
+    .experiencia_section_container {
+        padding-inline: clamp(1rem, 5vw, 80px);
+        font-family: "Poppins", sans-serif;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centra horizontalmente el contenido */
+    }
+
+    /* Línea vertical - ajustada para alinearse perfectamente con el punto */
+    .timeline::after {
+        content: "";
+        position: absolute;
+        width: 2px;
+        background-color: rgba(154, 176, 153, 0.4); /* Verde claro semi-transparente que coincide con la paleta */
+        top: 0;
+        bottom: 0;
+        left: 10px;
+        transform: translateX(-50%);
+    }
+
+    /* Contenedor de cada item de experiencia */
+    .timeline-item {
+        position: relative;
+        padding: 10px 0 10px 15px; /* Aumentado el padding izquierdo */
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: flex-start; /* Cambiado a flex-start para mejor alineación */
+    }
+
+    /* Punto indicador con efecto glow - color actualizado */
+    .timeline-dot {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background-color: #9AB099; /* Verde claro que coincide con la paleta del sitio */
+        border-radius: 50%;
+        left: 10px;
+        top: 15px;
+        transform: translateX(-50%); /* Centra el punto en su posición */
+        z-index: 1;
+        box-shadow: 0 0 15px rgba(154, 176, 153, 0.7); /* Efecto glow verde */
+    }
+
+    /* Contenido de cada experiencia - borde actualizado */
+    .timeline-content {
+        padding: 20px;
+        background: rgba(30, 30, 45, 0.6);
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        border-right: 3px solid #9AB099; /* Verde claro que coincide con la paleta */
+        border-left: none;
+        width: calc(100% - 30px);
+        display: flex;
+        flex-wrap: wrap; /* Permite que se ajuste en pantallas pequeñas */
+        gap: 20px;
+    }
+
+    /* Contenedores dentro de la tarjeta */
+    .title-container {
+        flex: 4; /* Toma 3 partes del espacio disponible (30% aprox) */
+        min-width: 200px; /* Asegura un tamaño mínimo */
+    }
+
+    .description-container {
+        flex: 6; /* Toma 7 partes del espacio disponible (70% aprox) */
+        min-width: 250px; /* Asegura un tamaño mínimo */
+    }
+
+    .timeline-content:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Estilos para los textos */
+    .puesto {
+        color: #ffffff;
+        font-size: 1.3rem;
+        margin: 0 0 8px 0;
+        font-weight: 600;
+    }
+
+    .empresa-periodo {
+        color: #cccccc;
+        font-size: 1rem;
+        margin: 0 0 12px 0;
+        font-weight: 500;
+    }
+
+    .periodo {
+        color: #9AB099; /* Verde claro que coincide con la paleta */
+        font-weight: 400;
+    }
+    
+    .descripcion {
+        color: #aaaaaa;
+        font-size: 0.90rem;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    /* Diseño responsive - mantiene la línea a la izquierda y el contenido a la derecha en todas las pantallas */
+    @media screen and (min-width: 768px) {
+        .timeline-content {
+            width: calc(100% - 40px); /* Ajustado el ancho */
+            max-width: 700px;
+        }
+
+        .timeline::after {
+            left: 45px;
+            transform: translateX(-50%); /* Mantiene la línea centrada */
+        }
+        
+        .timeline-dot {
+            left: 45px;
+            transform: translateX(-50%); /* Mantiene el punto centrado */
+        }
+        
+        .timeline-item {
+            padding-left: 65px; /* Ajustado el padding */
+        }
+    }
+
+    /* Diseño responsive - apila elementos en pantallas pequeñas */
+    @media screen and (max-width: 768px) {
+        .timeline-content {
+            flex-direction: column; /* En pantallas pequeñas, apila verticalmente */
+        }
+
+        .title-container,
+        .description-container {
+            width: 100%; /* En pantallas pequeñas, ocupan todo el ancho */
+        }
+    }
+
+</style>

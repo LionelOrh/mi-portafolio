@@ -23,15 +23,14 @@ import Trayecto from "../assets/Icon/Trayecto.astro";
 ---
 
 <section class="section_trayectoria" id="trayectoria">
-    <p class="section_title">
+    <div class="section_title">
         <Trayecto />
-        Trayectoria
-    </p>
-    <div class="section_trayectoria__container" data-aos="zoom-in-down"> 
+        <h3>Trayectoria</h3>
+    </div>
+    <div class="section_trayectoria__container">
         {
             trayectoria.map((trayectoria) => (
-                <article class="container"
-                >
+                <article class="container">
                     <div class="left">
                         <span class="left_title">{trayectoria.carrera}</span>
                         <span class="left_año">{trayectoria.año}</span>
@@ -60,23 +59,45 @@ import Trayecto from "../assets/Icon/Trayecto.astro";
 
 <style>
     .section_trayectoria {
-        margin-top: 2rem;
-        max-width: 100%;
         padding-inline: clamp(1rem, 5vw, 80px);
         font-family: "Poppins", sans-serif;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centra horizontalmente el contenido */
+        width: 100%;
+        box-sizing: border-box; /* Esta línea es crucial */
     }
     .section_trayectoria__container {
-        background: #2e9fb1;
-        max-width: 100%;
+        /* Nuevo color de fondo que combina con la paleta del sitio */
+        background: linear-gradient(135deg, #2c5b61 0%, #3d8490 100%);
+        width: 100%;
+        max-width: 1200px;
         border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+    
+    .section_trayectoria__container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px rgba(31, 38, 135, 0.25);
+    }
+    
     .section_title {
-        font-size: 2rem;
-        font-weight: 500;
         display: flex;
         align-items: center;
         gap: 10px;
-        margin-bottom: 2rem;
+        color: #ffffff;
+        text-shadow: 0 2px 10px rgba(154, 176, 153, 0.3);
+        margin-bottom: 30px;
+        width: 100%; /* Para que el encabezado ocupe todo el ancho disponible */
+        max-width: 1200px; /* Igual que el timeline para consistencia */
+    }
+    .section_title h3 {
+        font-size: 1.8rem;
+        font-weight: 500;
     }
     .container {
         display: flex;
@@ -111,9 +132,17 @@ import Trayecto from "../assets/Icon/Trayecto.astro";
         left: 50%;
         transform: translateX(-50%);
         z-index: 1;
-        background-color: rgb(202, 202, 202);
+        background-color: rgba(255, 255, 255, 0.9);
         border-radius: 50%;
+        padding: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
     }
+    
+    .container:hover .hat {
+        transform: translateX(-50%) translateY(-3px);
+    }
+    
     .container:before {
         content: "";
         position: absolute;
@@ -122,13 +151,72 @@ import Trayecto from "../assets/Icon/Trayecto.astro";
         left: 50%;
         transform: translateX(-50%);
         width: 2px;
-        background: white;
+        background: rgba(255, 255, 255, 0.8);
         z-index: 0;
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
     }
     .left_title,
     .right_title {
         font-size: 1.5rem;
+        font-weight: 600;
+        /* Reemplazamos el gradiente por un color sólido distintivo que contrasta bien con el fondo */
+        color: #9AB099;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        position: relative;
+        display: inline-block;
+        margin-bottom: 10px;
+        letter-spacing: 0.01em;
     }
+    
+    /* Línea decorativa bajo los títulos con color sólido */
+    .left_title:after,
+    .right_title:after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        height: 2px;
+        background: rgba(154, 176, 153, 0.7); /* Color consistente con el título */
+        border-radius: 2px;
+        width: 70%;
+        transition: width 0.3s ease;
+    }
+    
+    /* Al hacer hover sobre el contenedor, la línea se expande ligeramente */
+    .container:hover .left_title:after,
+    .container:hover .right_title:after {
+        width: 90%;
+    }
+    
+    .left_title:after {
+        right: 0;
+    }
+    
+    .right_title:after {
+        left: 0;
+    }
+    
+    .left_año {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 400;
+        background: rgba(154, 176, 153, 0.2); /* Cambiado para coincidir con el esquema */
+        padding: 4px 12px;
+        border-radius: 15px;
+        margin-top: 5px;
+        display: inline-block;
+        backdrop-filter: blur(4px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(154, 176, 153, 0.1);
+    }
+    
+    .right_description {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.85);
+        padding: 5px 0;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    }
+    
     /* 🧠 Pantallas mayores a 768px: diseño en fila */
     @media (min-width: 768px) {
         .container {
@@ -140,6 +228,7 @@ import Trayecto from "../assets/Icon/Trayecto.astro";
         .left_title,
         .right_title {
             font-size: 1.1rem;
+            margin-bottom: 6px;
         }
 
         .left_año,
@@ -164,7 +253,6 @@ import Trayecto from "../assets/Icon/Trayecto.astro";
     }
 
     @media (max-width: 675px) {
-
         .container {
             padding: 1.5rem 1rem;
             gap: 16px;
@@ -173,11 +261,12 @@ import Trayecto from "../assets/Icon/Trayecto.astro";
         .left_title,
         .right_title {
             font-size: 1.1rem;
+            margin-bottom: 5px;
         }
 
         .left_año,
         .right_description {
-            font-size: 0.90rem;
+            font-size: 0.9rem;
         }
 
         .hat {
@@ -188,6 +277,12 @@ import Trayecto from "../assets/Icon/Trayecto.astro";
         .image-container {
             min-width: 45px;
             height: 45px;
+        }
+    }
+    /* Ajuste adicional para pantallas más grandes */
+    @media screen and (min-width: 992px) {
+        .section_title {
+            max-width: 1200px;
         }
     }
 </style>
