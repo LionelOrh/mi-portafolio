@@ -17,7 +17,9 @@ import Valores from "../components/Valores.astro";
             <header>
                 <p class="estado">DISPONIBLE PARA TRABAJAR</p>
                 <h1 class="title__especialidad">
-                    ¡Hola! Soy un <span class="highlight-text">Desarrollador</span> Web <span class="highlight-secondary">FullStack</span>.
+                    ¡Hola! Soy un <span class="highlight-text"
+                        >Desarrollador</span
+                    > Web <span class="highlight-secondary">FullStack</span>.
                 </h1>
             </header>
             <p class="info__descripcion">
@@ -26,11 +28,18 @@ import Valores from "../components/Valores.astro";
                 con código limpio, arquitecturas eficientes y las mejores
                 tecnologías.
             </p>
-            <a
-                href="/CV_Lionel.pdf"
-                download="CV_Lionel_Orihuela.pdf"
-                class="info__descarga">Descarga mi CV</a
-            >
+            <div class="section-hero__info-buttons">
+                <a
+                    href="/CV_Lionel.pdf"
+                    download="CV_Lionel_Orihuela.pdf"
+                    class="info__descarga">🗃️ Descarga mi CV</a
+                >
+                <a
+                    href="https://wa.me/51907992645"
+                    target="_blank"
+                    class="btn_contactame">📞 Contactamé</a
+                >
+            </div>
         </article>
         <article class="section-hero__info-image">
             <div class="mini__project">
@@ -118,8 +127,16 @@ import Valores from "../components/Valores.astro";
         left: 0;
         width: 100%;
         height: 100%;
-        background: radial-gradient(circle at top right, rgba(74, 72, 122, 0.2), transparent 60%),
-                    radial-gradient(circle at bottom left, rgba(93, 217, 184, 0.1), transparent 50%);
+        background: radial-gradient(
+                circle at top right,
+                rgba(74, 72, 122, 0.2),
+                transparent 60%
+            ),
+            radial-gradient(
+                circle at bottom left,
+                rgba(93, 217, 184, 0.1),
+                transparent 50%
+            );
         pointer-events: none;
         z-index: -1;
     }
@@ -207,7 +224,7 @@ import Valores from "../components/Valores.astro";
     }
 
     .highlight-text {
-        background: linear-gradient(90deg, #9AB099, #558c52);
+        background: linear-gradient(90deg, #9ab099, #558c52);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -230,16 +247,31 @@ import Valores from "../components/Valores.astro";
         letter-spacing: 0.01em;
         text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     }
-
-    .info__descarga {
-        background: linear-gradient(135deg, #9AB099, #558c52);
+    .section-hero__info-buttons{
+        padding-top: 12px;
+        display: flex;
+        gap: 12px;
+    }
+    .btn_contactame {
+        text-decoration: none;
+        color: white;
+        background: linear-gradient(135deg, #2c5b61 0%, #3d8490 100%);
         padding: 14px 28px;
         border-radius: 30px;
         color: #ffffff;
         font-family: "Poppins", sans-serif;
         font-weight: 600;
         font-size: 16px;
-        margin-top: 1.5rem;
+    }
+
+    .info__descarga {
+        background: linear-gradient(135deg, #9ab099, #558c52);
+        padding: 14px 28px;
+        border-radius: 30px;
+        color: #ffffff;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        font-size: 16px;
         display: inline-block;
         text-decoration: none;
         transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -253,35 +285,11 @@ import Valores from "../components/Valores.astro";
         transform: translateY(-3px);
         box-shadow: 0 10px 25px rgba(85, 140, 82, 0.5);
         background: linear-gradient(135deg, #a5c0a4, #467a43);
-    }
-
-    .info__descarga::before {
-        content: "📥";
-        margin-right: 10px;
-        font-size: 18px;
-        display: inline-block;
-        vertical-align: middle;
-        transform: translateY(-1px);
-    }
+    }   
 
     .info__descarga:active {
         transform: translateY(0);
         box-shadow: 0 3px 10px rgba(85, 140, 82, 0.3);
-    }
-
-    .info__descarga::after {
-        content: "";
-        position: absolute;
-        width: 30px;
-        height: 100px;
-        background: rgba(255, 255, 255, 0.3);
-        top: -30px;
-        transform: rotate(35deg) translateX(-150px);
-        transition: transform 0.6s ease;
-    }
-
-    .info__descarga:hover::after {
-        transform: rotate(35deg) translateX(350px);
     }
 
     .section-hero__info-image {
@@ -301,7 +309,9 @@ import Valores from "../components/Valores.astro";
         height: 100%;
         box-sizing: border-box;
         box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        transition:
+            transform 0.5s ease,
+            box-shadow 0.5s ease;
         border: 1px solid rgba(154, 176, 153, 0.2);
     }
 
@@ -320,8 +330,6 @@ import Valores from "../components/Valores.astro";
         filter: brightness(0.9);
     }
 
-    
-
     .info_user_project {
         position: absolute;
         z-index: 1;
@@ -332,7 +340,13 @@ import Valores from "../components/Valores.astro";
         padding: 20px;
         box-sizing: border-box;
         width: 100%;
-        background: linear-gradient(to bottom, rgba(29, 28, 42, 0.7), transparent 20%, transparent 70%, rgba(29, 28, 42, 0.7));
+        background: linear-gradient(
+            to bottom,
+            rgba(29, 28, 42, 0.7),
+            transparent 20%,
+            transparent 70%,
+            rgba(29, 28, 42, 0.7)
+        );
     }
 
     .info_user_project__details {
@@ -351,7 +365,7 @@ import Valores from "../components/Valores.astro";
         width: fit-content;
         padding: 8px 16px;
         text-decoration: none;
-        color: #1D1C2A;
+        color: #1d1c2a;
         font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease;
@@ -373,7 +387,9 @@ import Valores from "../components/Valores.astro";
         overflow: hidden;
         box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         border: 1px solid rgba(154, 176, 153, 0.2);
-        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        transition:
+            transform 0.5s ease,
+            box-shadow 0.5s ease;
     }
 
     .photo__profile:hover {
@@ -396,7 +412,12 @@ import Valores from "../components/Valores.astro";
     .desc {
         grid-column: span 3 / span 3;
         grid-row-start: 2;
-        background: linear-gradient(135deg, #333642 0%, #4a485e 50%, #333642 100%);
+        background: linear-gradient(
+            135deg,
+            #333642 0%,
+            #4a485e 50%,
+            #333642 100%
+        );
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -452,7 +473,7 @@ import Valores from "../components/Valores.astro";
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    
+
     .item:hover {
         transform: translateY(-8px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
@@ -492,12 +513,11 @@ import Valores from "../components/Valores.astro";
         .desc {
             display: none;
         }
-        
+
         .info__descarga {
-            
             text-align: center;
         }
-        
+
         .social__media {
             display: flex;
             flex-wrap: wrap;
@@ -505,7 +525,7 @@ import Valores from "../components/Valores.astro";
             gap: 15px;
             margin-top: 20px;
         }
-        
+
         .social__media .item {
             width: 45px;
             height: 45px;
@@ -626,7 +646,7 @@ import Valores from "../components/Valores.astro";
             width: 100%;
             height: 100%;
         }
-        
+
         .social__media {
             display: grid;
             grid-template-columns: repeat(3, 1fr);

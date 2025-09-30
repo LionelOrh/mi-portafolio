@@ -1,0 +1,231 @@
+---
+import Youtube from "../assets/Icon/YoutubeMini.astro";
+import Image from "astro/components/Image.astro";
+import Link from "../assets/Icon/Link.astro";
+import GitHub from "../assets/Icon/GitHubMin.astro";
+
+
+// Definimos la interfaz para el objeto `project`
+interface Technology {
+    name: string;
+    icon: string;
+}
+
+interface GitHubRepo {
+    name: string;
+    url: string;
+}
+
+interface Project {
+    title: string;
+    description: string;
+    image: string;
+    link?: string;
+    youtube?: string;
+    GitHub: GitHubRepo[];
+    technologies: Technology[];
+    featured: boolean;
+}
+
+// Declaramos que `Astro.props` contiene un objeto `project` con el tipo `Project`
+const { project } = Astro.props as { project: Project };
+---
+
+<article class="project_container__item">
+    <div class="project-image-container">
+        <Image src={project.image} alt={project.title} class="project_img" width={500} height={200}/>
+    </div>
+
+    <div class="tech-stack">
+        {
+            project.technologies.map((tech) => (
+                <div class="tech-item">
+                    <img
+                        src={tech.icon}
+                        alt={tech.name}
+                        class="tech-icon"
+                        loading="lazy"
+                    />
+                    <span class="tech-item__name">{tech.name}</span>
+                </div>
+            ))
+        }
+    </div>
+    <div class="project__details">
+        <span class="project_title"> {project.title}</span>
+        <p class="project_descripcion">
+            {project.description}
+        </p>
+    </div>
+    <div class="project-links">
+        {
+            project.link && (
+                <a href={project.link} class="btn" target="_blank">
+                    <Link />
+                    Ver proyecto
+                </a>
+            )
+        }
+
+        {
+            project.youtube && (
+                <a href={project.youtube} class="btn" target="_blank">
+                    <Youtube />
+                    Youtube
+                </a>
+            )
+        }
+        <div class="project-github">
+            {
+                project.GitHub.map((repo) => (
+                    <a href={repo.url} target="_blank" class="btn">
+                        <GitHub />
+                        {repo.name}
+                    </a>
+                ))
+            }
+        </div>
+    </div>
+</article>
+<style>
+    .projects_container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        width: 100%;
+        max-width: 1200px; /* Mismo ancho máximo que en Experiencia */
+        margin: 0 auto; /* Centra el contenedor horizontalmente */
+    }
+    
+    .project_container__item {
+        background: linear-gradient(135deg, #2a2d3a 0%, #333642 100%);
+        padding: 1.25rem;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        /* Aseguramos que el padding no afecte el cálculo del espaciado */
+        box-sizing: border-box;
+    }
+    
+    .project_container__item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 40px rgba(31, 38, 135, 0.25);
+    }
+    
+    .tech-icon {
+        width: 15px;
+        height: 15px;
+    }
+    
+    .tech-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        background-color: rgba(74, 72, 122, 0.5);
+        border-radius: 20px;
+        padding: 2px 10px;
+        backdrop-filter: blur(4px);
+    }
+    
+    .tech-item__name {
+        color: #ffffff;
+        font-size: 0.8rem;
+    }
+    
+    .project__details {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .tech-stack {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap; /* Permite que las tecnologías fluyan a la siguiente línea si es necesario */
+    }
+    
+    .project-links {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        }
+    
+    .btn {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        background: linear-gradient(135deg, #2c5b61 0%, #3d8490 100%);
+        color: #ffffff;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-weight: 300;
+        text-decoration: none;
+    }
+    
+    .project-github {
+        display: flex;
+        gap: 10px;
+    }
+    
+    .project-image-container {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        border-radius: 20px;
+    }
+    
+    .project_img {
+        max-width: 100%;
+        height: 100%;
+        transition: transform 0.3s ease-in-out;
+        object-fit: cover;
+    }
+    
+    .project-image-container:hover .project_img {
+        transform: scale(1.1);
+    }
+    
+    .project_title {
+        font-size: 1.5rem;
+        line-height: 1.8rem;
+        font-weight: 500;
+        color: #ffffff;
+        margin-bottom: 0.5rem;
+        background: linear-gradient(90deg, #ffffff, #9AB099);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    .project_descripcion {
+        font-size: 0.9rem;
+        color: #e0e0e0;
+        line-height: 1.5;
+    }
+
+    /* Diseño responsive adaptado del componente Experiencia */
+    @media screen and (max-width: 768px) {
+        .projects_container {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        /* Ajuste de margen superior para mejor espaciado en móvil */
+        .project-links {
+            margin-top: 1rem;
+        }
+    }
+
+    /* Diseño para tablets */
+    @media screen and (min-width: 768px) and (max-width: 992px) {
+        .projects_container {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+    }
+</style>

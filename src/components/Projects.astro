@@ -1,14 +1,10 @@
 ---
 import Code from "../assets/Icon/Code.astro";
-import GitHub from "../assets/Icon/GitHubMin.astro";
 import ProyectoIniciarSesion from "../assets/ProyectoIniciarSesion.webp";
 import ProyectoCRUD from "../assets/ProyectoCrud.webp";
 import SstemaAccesos from "../assets/Sistema-Accesos.webp";
 import SistemaMMW from "../assets/MensajeMasivoWhastApp.webp";
-import Link from "../assets/Icon/Link.astro";
 import Constructora from "../assets/constructora.webp";
-import Youtube from "../assets/Icon/YoutubeMini.astro";
-import Image from "astro/components/Image.astro";
 import PruebaTecnica from "../assets/PruebaTecnicaTicTecnologie.webp";
 
 const projects = [
@@ -43,6 +39,7 @@ const projects = [
                 icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
             },
         ],
+        featured: true,
     },
     {
         title: "Sistema de Accesos y gestión de Roles",
@@ -75,6 +72,7 @@ const projects = [
                 icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
             },
         ],
+        featured: true,
     },
     {
         title: "Sistema de Envío Masivo de Mensajes a WhatsApp",
@@ -99,6 +97,7 @@ const projects = [
                 icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/insomnia/insomnia-original.svg",
             },
         ],
+        featured: false,
     },
     {
         title: "Gestión de Registros (CRUD)",
@@ -134,6 +133,7 @@ const projects = [
                 icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
             },
         ],
+        featured: false,
     },
     {
         title: "Constructora JAIL.SAC",
@@ -162,9 +162,10 @@ const projects = [
                 icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
             },
         ],
+        featured: true,
     },
     {
-        title: "Prueba Técnica - TIC-Technologies",
+        title: "Calculadora de Bonificaciones de Gaseosas",
         description:
             "Aplicación para cálculo de bonificaciones con formularios dinámicos y tablas interactivas. Backend en FastAPI (Python) y frontend en React, con despliegue continuo en Vercel.",
         image: PruebaTecnica,
@@ -194,87 +195,40 @@ const projects = [
                 icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vite/vite-original.svg",
             },
         ],
+        featured: false,
     },
 ];
+
+import ProjectItem from "./ProjectItem.astro";
+const featuredProjects = projects.filter((project) => project.featured);
+const normalProjects = projects.filter((project) => !project.featured);
 ---
 
 <section class="section-projects" id="proyectos">
-    <div class="section-projects__title">
-        <Code />
-        <span>Mis Proyectos</span>
+    <div>
+        <div class="section-projects__title">
+            <Code />
+            <span>Proyectos Destacados</span>
+        </div>
+
+        <div class="projects_container">
+            {
+                featuredProjects.map((project) => (
+                    <ProjectItem project={project} />
+                ))
+            }
+        </div>
     </div>
 
-    <div class="projects_container">
-        {
-            projects.map((project) => (
-                <article class="project_container__item">
-                    <div class="project-image-container">
-                        <Image
-                            src={project.image}
-                            alt={project.title}
-                            class="project_img"
-                        />
-                    </div>
+    <div>
+        <div class="section-projects__title">
+            <Code />
+            <span>Proyectos Completos</span>
+        </div>
 
-                    <div class="tech-stack">
-                        {project.technologies.map((tech) => (
-                            <div class="tech-item">
-                                <img
-                                    src={tech.icon}
-                                    alt={tech.name}
-                                    class="tech-icon"
-                                    loading="lazy"
-                                />
-                                <span class="tech-item__name">
-                                    {tech.name}
-                                </span>
-                            </div>
-                        ))}
-                    </div>
-                    <div class="project__details">
-                        <span class="project_title"> {project.title}</span>
-                        <p class="project_descripcion">
-                            {project.description}
-                        </p>
-                    </div>
-                    <div class="project-links">
-                        {project.link && (
-                            <a
-                                href={project.link}
-                                class="btn"
-                                target="_blank"
-                            >
-                                <Link />
-                                Ver proyecto
-                            </a>
-                        )}
-
-                        {project.youtube && (
-                            <a
-                                href={project.youtube}
-                                class="btn"
-                                target="_blank"
-                            >
-                                <Youtube />
-                                Youtube
-                            </a>
-                        )}
-                        <div class="project-github">
-                            {project.GitHub.map((repo) => (
-                                <a
-                                    href={repo.url}
-                                    target="_blank"
-                                    class="btn"
-                                >
-                                    <GitHub />
-                                    {repo.name}
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-                </article>
-            ))
-        }
+        <div class="projects_container">
+            {normalProjects.map((project) => <ProjectItem project={project} />)}
+        </div>
     </div>
 </section>
 
@@ -289,8 +243,9 @@ const projects = [
         align-items: center; /* Centra horizontalmente el contenido */
         width: 100%;
         box-sizing: border-box; /* Esta línea es crucial */
+        gap: 4rem; /* Espacio entre las dos secciones de proyectos */
     }
-    
+
     .section-projects__title {
         display: flex;
         align-items: center;
@@ -301,12 +256,12 @@ const projects = [
         width: 100%; /* Para que el encabezado ocupe todo el ancho disponible */
         max-width: 1200px; /* Igual que el timeline para consistencia */
     }
-    
+
     .section-projects__title span {
         font-size: 1.8rem;
         font-weight: 500;
     }
-    
+
     .projects_container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -315,7 +270,7 @@ const projects = [
         max-width: 1200px; /* Mismo ancho máximo que en Experiencia */
         margin: 0 auto; /* Centra el contenedor horizontalmente */
     }
-    
+
     .project_container__item {
         background: linear-gradient(135deg, #2a2d3a 0%, #333642 100%);
         padding: 1.25rem;
@@ -324,22 +279,24 @@ const projects = [
         flex-direction: column;
         gap: 20px;
         box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
         height: 100%;
         /* Aseguramos que el padding no afecte el cálculo del espaciado */
         box-sizing: border-box;
     }
-    
+
     .project_container__item:hover {
         transform: translateY(-5px);
         box-shadow: 0 12px 40px rgba(31, 38, 135, 0.25);
     }
-    
+
     .tech-icon {
         width: 15px;
         height: 15px;
     }
-    
+
     .tech-item {
         display: flex;
         align-items: center;
@@ -349,12 +306,12 @@ const projects = [
         padding: 2px 10px;
         backdrop-filter: blur(4px);
     }
-    
+
     .tech-item__name {
         color: #ffffff;
         font-size: 0.8rem;
     }
-    
+
     .project__details {
         display: flex;
         flex-direction: column;
@@ -367,13 +324,13 @@ const projects = [
         align-items: center;
         flex-wrap: wrap; /* Permite que las tecnologías fluyan a la siguiente línea si es necesario */
     }
-    
+
     .project-links {
         display: flex;
         gap: 10px;
         flex-wrap: wrap;
-        }
-    
+    }
+
     .btn {
         display: flex;
         align-items: center;
@@ -385,42 +342,42 @@ const projects = [
         font-weight: 300;
         text-decoration: none;
     }
-    
+
     .project-github {
         display: flex;
         gap: 10px;
     }
-    
+
     .project-image-container {
         width: 100%;
         height: 200px;
         overflow: hidden;
         border-radius: 20px;
     }
-    
+
     .project_img {
         max-width: 100%;
         height: 100%;
         transition: transform 0.3s ease-in-out;
         object-fit: cover;
     }
-    
+
     .project-image-container:hover .project_img {
         transform: scale(1.1);
     }
-    
+
     .project_title {
         font-size: 1.5rem;
         line-height: 1.8rem;
         font-weight: 500;
         color: #ffffff;
         margin-bottom: 0.5rem;
-        background: linear-gradient(90deg, #ffffff, #9AB099);
+        background: linear-gradient(90deg, #ffffff, #9ab099);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
     }
-    
+
     .project_descripcion {
         font-size: 0.9rem;
         color: #e0e0e0;
@@ -433,7 +390,7 @@ const projects = [
             grid-template-columns: 1fr;
             gap: 2rem;
         }
-        
+
         /* Ajuste de margen superior para mejor espaciado en móvil */
         .project-links {
             margin-top: 1rem;
@@ -447,5 +404,4 @@ const projects = [
             gap: 2.5rem;
         }
     }
-    
 </style>
