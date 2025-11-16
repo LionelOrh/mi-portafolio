@@ -14,19 +14,21 @@ import Valores from "../components/Valores.astro";
 <section class="section-hero">
     <div class="section-hero__container">
         <article class="section-hero__info-user">
-            <header>
+            <div>
                 <p class="estado">DISPONIBLE PARA TRABAJAR</p>
                 <h1 class="title__especialidad">
-                    ¡Hola! Soy un <span class="highlight-text"
-                        >Desarrollador</span
-                    > Web <span class="highlight-secondary">FullStack</span>.
+                    ¡Hola! Soy 
+                    <span class="highlight-text">Lionel Orihuela</span><br />
+                    <span class="highlight-secondary">LiooDev.</span>
                 </h1>
-            </header>
+            </div>
             <p class="info__descripcion">
-                Desarrollador Web Full-Stack Jr, apasionado por crear soluciones
-                innovadoras y escalables. Transformo ideas en proyectos reales
-                con código limpio, arquitecturas eficientes y las mejores
-                tecnologías.
+                <span class="highlight-dev">Desarrollador Backend Junior</span>
+                apasionado por crear soluciones
+                eficientes y escalables.
+                Trabajo principalmente con Java y Spring Boot para construir
+                APIs REST y sistemas robustos. También tengo experiencia
+                desarrollando interfaces web con Angular.
             </p>
             <div class="section-hero__info-buttons">
                 <a
@@ -140,6 +142,14 @@ import Valores from "../components/Valores.astro";
         pointer-events: none;
         z-index: -1;
     }
+    .highlight-dev{
+        background: linear-gradient(90deg, #2dffd4, #02a9be);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: none;
+        font-weight: 700;
+    }
 
     .section-hero__container {
         display: grid;
@@ -216,7 +226,7 @@ import Valores from "../components/Valores.astro";
         font-size: 75px;
         font-family: "Poppins", sans-serif;
         font-weight: 700;
-        line-height: 1;
+        line-height: 1.1;
         margin-top: 2rem;
         margin-bottom: 2rem;
         color: #ffffff;
@@ -224,7 +234,7 @@ import Valores from "../components/Valores.astro";
     }
 
     .highlight-text {
-        background: linear-gradient(90deg, #9ab099, #558c52);
+        background: linear-gradient(90deg, #02a9be, #56a0f4);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -247,7 +257,7 @@ import Valores from "../components/Valores.astro";
         letter-spacing: 0.01em;
         text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     }
-    .section-hero__info-buttons{
+    .section-hero__info-buttons {
         padding-top: 12px;
         display: flex;
         gap: 12px;
@@ -285,7 +295,7 @@ import Valores from "../components/Valores.astro";
         transform: translateY(-3px);
         box-shadow: 0 10px 25px rgba(85, 140, 82, 0.5);
         background: linear-gradient(135deg, #a5c0a4, #467a43);
-    }   
+    }
 
     .info__descarga:active {
         transform: translateY(0);
